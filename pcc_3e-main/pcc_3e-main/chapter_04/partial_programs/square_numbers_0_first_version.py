@@ -5,5 +5,6 @@ for value in range(1, 11):
 
 print(squares)
 
+#enumerate
 for i, v in enumerate(squares):
     print("{}는 {}".format(i,v))
