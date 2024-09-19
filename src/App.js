@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import { FcApproval } from "react-icons/fc";
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className='bg-rose-200'>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -16,6 +18,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          <FcApproval />
         </a>
       </header>
     </div>
