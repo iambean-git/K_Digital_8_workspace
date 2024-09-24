@@ -4,7 +4,8 @@ import homeImg from'./home.png';
 // import Hello from './01/Hello';
 //import MyClock from './02/MyClock';
 // import MyDiv1 from './03/MyDiv11';
-import MyList from './04/MyList';
+// import MyList from './04/MyList';
+import Lotto from './05/Lotto';
 
 function App() {
   return (
@@ -25,10 +26,11 @@ function App() {
 
       <main className='w-full grow flex flex-col justify-center items-center
                         overflow-y-auto'>
-      {/* overflow-y-scroll : 해당 부분에서만 스크롤 움직이게 (스크롤이 항상 보임)*/}
-      {/* overflow-y-auto : 평소엔 스크롤 안보이다가 화면이 넘치면 스크롤 나타나게 */}
+        {/* overflow-y-scroll : 해당 부분에서만 스크롤 움직이게 (스크롤이 항상 보임)*/}
+        {/* overflow-y-auto : 평소엔 스크롤 안보이다가 화면이 넘치면 스크롤 나타나게 */}
         {/* <MyDiv1/> */}
-        <MyList />
+        {/* <MyList /> */}
+        <Lotto />
       </main>
       
       <footer className='w-full h-20 flex justify-center items-center
