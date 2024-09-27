@@ -41,12 +41,13 @@ export default function FoodMain() {
     return (
         <div className='w-10/12 flex flex-col justify-start items-center'>
             <div className='w-full h-20
-                            flex justify-center items-center '>
+                            flex justify-center items-center'>
                 {btns}
             </div>
 
             <div className='m-2  
-                        grid grid-cols-1 lg:grid-cols-2 gap-1'>
+                        grid grid-cols-1 lg:grid-cols-2 gap-1
+                        '>
                 {tags}
             </div>
         </div>

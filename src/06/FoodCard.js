@@ -3,12 +3,13 @@ import bank from './img/bank.png';
 import busan from './img/busan.png';
 import market from './img/market.png';
 
-export default function FoodCard(props) {
-    const sortF = props["foodItem"]["구분"];
-    const name = props["foodItem"]["사업장명"];
-    const operName = props["foodItem"]["운영주체명"];
-    const place = props["foodItem"]["사업장 소재지"];
-    const telN = props["foodItem"]["연락처(대표번호)"];
+export default function FoodCard({foodItem}) {
+    //console.log(foodItem);
+    const sortF = foodItem["구분"];
+    const name = foodItem["사업장명"];
+    const operName = foodItem["운영주체명"];
+    const place = foodItem["사업장 소재지"];
+    const telN = foodItem["연락처(대표번호)"];
 
     const objImg = {
         "광역지원센터" : busan,
