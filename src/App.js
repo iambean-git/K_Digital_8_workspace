@@ -2,7 +2,7 @@ import './App.css';
 import homeImg from'./home.png';
 
 // import Hello from './01/Hello';
-// import MyClock from './02/MyClock';
+import MyClock from './02/MyClock';
 // import MyDiv1 from './03/MyDiv11';
 // import MyList from './04/MyList';
 // import Lotto from './05/Lotto';
@@ -25,14 +25,15 @@ function App() {
         </a>
       </header>
 
-      <main className='w-full h-4/5 grow flex flex-col items-center
+      <main className='w-full grow flex flex-col items-center
                         overflow-y-auto'>
         {/* overflow-y-scroll : 해당 부분에서만 스크롤 움직이게 (스크롤이 항상 보임)*/}
         {/* overflow-y-auto : 평소엔 스크롤 안보이다가 화면이 넘치면 스크롤 나타나게 */}
         {/* <MyDiv1/> */}
+        <MyClock/>
         {/* <MyList /> */}
         {/* <Lotto /> */}
-        <FoodMain/>
+        {/* <FoodMain/> */}
       </main>
       
       <footer className='w-full h-20 flex justify-center items-center
