@@ -8,7 +8,7 @@ function MyClockTime() {
             setCTime(new Date());
         },1000);   //1000ms 즉,1초에 한번 함수 실행
 
-        return clearInterval(tm);   //컴포넌트가 없어질 때 클리어(setInterval 종료)됨
+        return () => {clearInterval(tm)};   //컴포넌트가 없어질 때 클리어(setInterval 종료)됨
     }, []);
 
     return (
