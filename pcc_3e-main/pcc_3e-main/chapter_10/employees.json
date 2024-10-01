@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Alice",
+        "age": 28,
+        "position": "Engineer"
+    },
+    {
+        "name": "Bob",
+        "age": 34,
+        "position": "Manager"
+    },
+    {
+        "name": "Charlie",
+        "age": 25,
+        "position": "Intern"
+    },
+    {
+        "name": "David",
+        "age": 30,
+        "position": "Designer"
+    },
+    {
+        "name": "Eva",
+        "age": 29,
+        "position": "Data Analyst"
+    },
+    {
+        "name": "Frank",
+        "age": 40,
+        "position": "Director"
+    },
+    {
+        "name": "Grace",
+        "age": 22,
+        "position": "Intern"
+    },
+    {
+        "name": "Heidi",
+        "age": 36,
+        "position": "HR"
+    },
+    {
+        "name": "Ivan",
+        "age": 31,
+        "position": "Developer"
+    },
+    {
+        "name": "Judy",
+        "age": 27,
+        "position": "Marketing Specialist"
+    }
+]
