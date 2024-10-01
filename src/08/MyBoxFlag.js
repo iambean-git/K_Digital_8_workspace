@@ -36,18 +36,26 @@ export default function MyBoxFlag({color}) {
             'border400' : 'border-lime-400',
             'hover300' : 'hover:bg-lime-300'
         },
+
+        'violet' :{
+            'bg100' : 'bg-violet-100',
+            'bg200' : 'bg-violet-200',
+            'text700' : 'text-violet-700',
+            'border400' : 'border-violet-400',
+            'hover300' : 'hover:bg-violet-300'
+        },
     }
 
     let colorSet = colorObj[color];
-    
+
     return (
-        <div className={`w-2/6 h-3/6 m-5
+        <div className={`w-full h-full m-5
                             border border-gray-300 ${Flag ? colorSet['bg200'] : ''}
                             flex flex-col justify-center items-center `}>
             <h1 className={`m-10 border border-gray-400 
                                 bg-white px-8 py-5 
                                 text-2xl ${colorSet['text700']} font-bold`}> {color} </h1>
-            <div className={`w-1/3 h-10 flex justify-center items-center
+            <div className={`w-1/3 h-1/6 flex justify-center items-center py-2
                                 border ${colorSet['border400']} ${colorSet['bg100']} ${colorSet['hover300']}
                                 rounded-md 
                                 text-xs font-bold hover:cursor-pointer `}
