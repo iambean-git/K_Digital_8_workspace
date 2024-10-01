@@ -28,7 +28,7 @@ export default function BoxOffice() {
     }
 
     const handleTrClick = (movieCd) => {
-        console.log(movieCd);
+        //console.log(movieCd);
 
         const apiKey = process.env.REACT_APP_MV_KEY;
 
@@ -39,7 +39,17 @@ export default function BoxOffice() {
         fetch(url)
             .then(resp => resp.json())
             .then(data =>{
-                console.log(data.movieInfoResult.movieInfo);
+                //console.log(data.movieInfoResult.movieInfo);
+                let mvInfos = data.movieInfoResult.movieInfo;
+                const detailInfo = <td colSpan={5} className="pl-2">{mvInfos.movieNm}
+                ({mvInfos.movieNmEn}) / {mvInfos.nations[0].nationNm} / {mvInfos.showTm}분
+                            <br/> 감독 | {mvInfos.directors[0].peopleNm}({mvInfos.directors[0].peopleNmEn})
+                    </td>
+                
+                ;
+                setMvinfo(detailInfo);
+                
+                
             })
             .catch(err => console.log(err))
 
@@ -135,12 +145,19 @@ export default function BoxOffice() {
                     </tr> */}
 
                 </tbody>
+                <tfoot>
+                    <tr className="bg-gray-600 text-white w-full text-left h-14 p-2 ">
+                        {mvInfo}
+                        
+                    </tr>
+                    
+                </tfoot>
             </table>
-            <div className=" w-10/12 border border-slate-400 mt-3">
+            {/* <div className=" w-10/12 border border-slate-400 mt-3">
                 <div>
                 제목 (영어제목) / 나라 / 분
                 </div>
-            </div>
+            </div> */}
         </div>
 
     )
