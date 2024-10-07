@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
 import TrafficToggle from "./TrafficToggle";
 
-export default function TrafficCatalog({ title, contents }) {
-    console.log("contents is" ,contents);
+export default function TrafficCatalog({ title, contents, sel, setSel}) {
+    //console.log("contents is" ,contents);
 
-    const [sel, setSel] = useState();
     const handleTgClick = (item) => {
         setSel(item);
     }
@@ -16,9 +14,6 @@ export default function TrafficCatalog({ title, contents }) {
     />
     );
     
-    useEffect(()=>{
-        console.log(sel) ;
-      }, [sel]);
 
     return (
         <div className="flex w-5/6 h-14 justify-start items-center m-3">

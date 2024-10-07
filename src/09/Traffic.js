@@ -4,9 +4,17 @@ import TrafficToggle from "./TrafficToggle";
 import TrafficResult from "./TrafficResult";
 
 export default function Traffic() {
+    //전체 데이터
     const [tdata, setTdata] = useState([]);
-    const [catalog, setCatalog] = useState();
-    const [btnSec, setBtnSec] = useState([]);
+
+    //대분류 데이터
+    const [c1, setC1] = useState([]);
+    const [selC1, setSelC1] = useState([]);
+
+    //중분류 데이터(사고유형)
+    const [c2, setC2] = useState([]);
+    const [selC2, setSelC2] = useState([]);
+
     const [selected, setSelected] = useState([]);
 
     const getFetchData = () => {
@@ -23,25 +31,6 @@ export default function Traffic() {
             .catch(err => console.log(err))
     }
 
-    //대분류 토글 클릭시 (중분류 뽑아내기)
-    const cataFirstClick = (cata) => {
-        let catalogSec = tdata.filter(item => item['사고유형대분류'] == cata);
-        catalogSec = catalogSec.map(item => item['사고유형중분류']);
-        catalogSec = [...new Set(catalogSec)];
-
-        const toggles = catalogSec.map(item => <TrafficToggle key={item}
-            txt={item}
-            handleClick={() => cataSecClick(cata, item)} />
-        );
-        setBtnSec(toggles);
-    }
-
-    const cataSecClick = (cata1, cata2) => {
-        console.log("cata1 is", cata1, " / cata2 is", cata2);
-        let info = tdata.filter(item => (item['사고유형대분류'] == cata1) && (item['사고유형중분류'] == cata2));
-        setSelected(info);
-    }
-
     //맨처음 한번
     useEffect(() => {
         getFetchData();
@@ -49,27 +38,46 @@ export default function Traffic() {
 
     //tdata가 변경되었을 때
     useEffect(() => {
-        console.log(tdata);
+        //console.log(tdata);
         let catalogFirst = tdata.map(item => item["사고유형대분류"]);
         catalogFirst = [...new Set(catalogFirst)];
-        const toggles = <TrafficCatalog
-            title="사고유형대분류"
-            contents={catalogFirst}
-        />;
 
-        // const toggles = catalogFirst.map(item => <TrafficToggle key={item}
-        //     txt={item} 
-        //     handleClick={()=>cataFirstClick(item)}/>
-        // );
-        setCatalog(toggles);
+        setC1(catalogFirst);
     }, [tdata]);
+
+
+    //대분류 하나가 선택되었을 때
+    useEffect(()=>{
+        //console.log("selC1 is, ",selC1);
+
+        let catalogSec = tdata.filter(item => item['사고유형대분류'] == selC1);
+        catalogSec = catalogSec.map(item => item['사고유형']);
+        catalogSec = [...new Set(catalogSec)];
+
+        //console.log("중분류 is ", catalogSec);
+        setC2(catalogSec);
+        setSelC2("");
+        setSelected(""); 
+        
+
+    },[selC1]);
+
+    //중분류 하나가 선택되었을 때
+    useEffect(()=>{
+        //console.log("selC1 is", selC1, " / selC2 is", selC2);
+        let info = tdata.filter(item => (item['사고유형대분류'] == selC1) && (item['사고유형'] == selC2));
+        //console.log("info is ",[...new Set(info)]);
+        setSelected(info);       
+
+    },[selC2]);
+
+
 
     return (
         <div className="flex flex-col w-full h-screen justify-center items-center">
-            {catalog}
-            {/* <TrafficCatalog txt={'교통사고 대분류'} btns={btns}/>
-            <TrafficCatalog txt={'교통사고 중분류'} btns={btnSec}/>
-            <TrafficResult info={selected}/> */}
+            <TrafficCatalog title={'교통사고 대분류'} contents={c1} sel={selC1} setSel ={setSelC1}/>
+            <TrafficCatalog title={'교통사고 중분류'} contents={c2} sel={selC2} setSel ={setSelC2}/>
+            <TrafficResult info={selected}/>
         </div>
     )
 }
