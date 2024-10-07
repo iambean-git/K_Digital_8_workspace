@@ -9,7 +9,8 @@ import homeImg from'./home.png';
 // import FoodMain from './06/FoodMain';
 // import BoxOffice from './07/BoxOffice';
 // import MyBox from './08/MyBox';
-import Traffic from './09/Traffic';
+// import Traffic from './09/Traffic';
+import MyRef from './10/MyRef';
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
         {/* <FoodMain/> */}
         {/* <BoxOffice /> */}
         {/* <MyBox /> */}
-        <Traffic />
+        {/* <Traffic /> */}
+        <MyRef />
         
       </main>
       
