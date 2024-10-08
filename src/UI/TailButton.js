@@ -1,4 +1,4 @@
-export default function TailButton({ caption, color, handleClick }) {
+export default function TailButton({ caption, color, handleClick, size }) {
     const btColor = {
         'blue' : 'bg-blue-400/10 border-solid border-blue-400 border-2 text-blue-400',
         'orange' : 'bg-orange-400/10 border-solid border-orange-400 border-2 text-orange-400',
@@ -15,7 +15,7 @@ export default function TailButton({ caption, color, handleClick }) {
 
     return (
         <button className={`inline-flex justify-center items-center
-                        p-2 px-5 mx-1 
+                        p-2 px-5 mx-1 ${size ? size : ''}
                         ${btColor[color]} ${btColorHover[color]} rounded-lg
                         transition duration-300
                         text-sm font-bold`}
