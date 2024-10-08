@@ -12,7 +12,7 @@ export default function BoxOfficeTr(props) {
     return (
         <tr onClick={props.handleClick}
             className="bg-white border-b hover:bg-gray-50">
-            <th scope="row" className="px-6 py-3 font-medium text-gray-900 whitespace-nowrap text-center">
+            <th scope="row" className="px-6 py-3 font-medium text-gray-900 whitespace-nowrap text-start">
                 {props.mvitem.rank}
             </th>
             <td scope="row" className="px-6 py-3 whitespace-nowrap">
@@ -26,8 +26,8 @@ export default function BoxOfficeTr(props) {
                 
             </td>
             <td className={`px-6 py-3 text-center ${txtColor}`}>
-                {rankInten == 0 ? '': rankInten > 0 ? '▲ ' : '▼ '}
-                {rankInten == 0 ? '-' : Math.abs(rankInten)}
+                {rankInten === 0 ? '': rankInten > 0 ? '▲ ' : '▼ '}
+                {rankInten === 0 ? '-' : Math.abs(rankInten)}
             </td>
         </tr>
     )

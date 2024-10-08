@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import BoxOfficeTr from "./BoxOfficeTr";
 
 export default function BoxOffice() {
@@ -6,15 +6,26 @@ export default function BoxOffice() {
     const [trs, setTrs] = useState([]);
     const [mvInfo, setMvinfo] = useState([]);
 
-    const getFetchData = () => {
+    const dtRef = useRef();
+
+    //어제 날짜 구하는 함수
+    const getYesterday = () => {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() -1);    
+        let dateString = '';
+        dateString = dateString + yesterday.getFullYear() +"-"
+                    +(("0" +(yesterday.getMonth()+1))).slice(-2) + "-"
+                    +("0" +yesterday.getDate()).slice(-2)
+        return dateString;
+    }
+
+
+    const getFetchData = (dt) => {
         //env에 있는 key 가져오기
         const apiKey = process.env.REACT_APP_MV_KEY;
-        const dt = '20240929';
-
+                
         let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?`;
         url = `${url}key=${apiKey}&targetDt=${dt}`;
-
-        //console.log('apiKey=',apiKey);
         //console.log('url=',url);
 
         //데이터 가져오기 (fetch)
@@ -28,8 +39,6 @@ export default function BoxOffice() {
     }
 
     const handleTrClick = (movieCd) => {
-        //console.log(movieCd);
-
         const apiKey = process.env.REACT_APP_MV_KEY;
 
         let url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?';
@@ -49,7 +58,6 @@ export default function BoxOffice() {
                 ;
                 setMvinfo(detailInfo);
                 
-                
             })
             .catch(err => console.log(err))
 
@@ -57,36 +65,19 @@ export default function BoxOffice() {
 
     //맨처음 한번 실행
     useEffect(() => {
-        getFetchData();
+        const ydt= getYesterday();
+        // console.log("Yesterday Date : ", ydt);
+
+        //input부분에 어제 날짜를 default로 넣어주기
+        dtRef.current.value = ydt;
+        dtRef.current.max = ydt;
+        getFetchData(ydt.replaceAll("-",""));
     }, []);
 
 
     //fetch 데이터가 채워지면
     useEffect(() => {
         //console.log("tdata is ", tdata);
-
-        //컴포넌트 별도 생성 안하고 만들기
-        // const mvList = tdata.map(item => 
-        //     <tr key={item.movieNm}
-        //     className="bg-white border-b hover:bg-gray-50">
-        //                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        //                     {item.rank}
-        //                 </th>
-        //                 <td scope="row" className="px-6 py-4 whitespace-nowrap">
-        //                     {item.movieNm}
-        //                 </td>
-        //                 <td className="px-6 py-4">
-        //                     {item.salesAmt}
-        //                 </td>
-        //                 <td className="px-6 py-4">
-        //                     {item.audiCnt}
-        //                 </td>
-        //                 <td className="px-6 py-4">
-        //                     {item.rankInten}
-        //                 </td>
-        //             </tr>
-        // );
-
 
         //컴포넌트 생성해서 만들기
         const mvList = tdata.map(item =>  <BoxOfficeTr key={item.movieNm}
@@ -98,9 +89,26 @@ export default function BoxOffice() {
         setTrs(mvList);
     }, [tdata])
 
+    //날짜 변경되면 
+    const handleDateChange = () => {
+        //console.log("선택된 날짜", dtRef.current.value.replaceAll("-",""));
+        getFetchData(dtRef.current.value.replaceAll("-",""));
+        
+    }
 
     return (
         <div className="w-full h-screen flex flex-col justify-center items-center">
+            <div className="flex flex-row justify-between items-center
+                            w-10/12 mb-10">
+                <div className="text-2xl font-bold text-indigo-500
+                                px-6">
+                    🎬 박스오피스 🎬
+                </div>
+                <div className="px-6">
+                    <input ref={dtRef} type="date" id='dt' name="dt" 
+                            onChange={handleDateChange}/>
+                </div>
+            </div>
 
             <table className="w-10/12 text-sm text-left rtl:text-right text-gray-500">
                 <thead className="text-sm text-gray-700 uppercase whitespace-nowrap bg-gray-300">
