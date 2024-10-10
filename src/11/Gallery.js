@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 
 export default function Gallery() {
     const [cards, setCards] = useState([]);
-    const handleCheck = () => {
+    const handleCheck = async() => {
         console.log("click");
         if (kword.current.value == "") {
             alert("검색어를 입력하세요");
@@ -22,25 +22,42 @@ export default function Gallery() {
             
             console.log(url);
 
-            fetch(url)
-                .then(resp => resp.json())
-                .then(data => {
-                    console.log(data.response.body.items.item);
-                    const dataAll = data.response.body.items.item;
-                    const dataCards = dataAll.map(item => 
-                        //console.log(item['galTitle'])
-                        <TailCard
-                                key={item['galTitle']} 
-                                imgUrl={item['galWebImageUrl']}
-                                title={item['galTitle']}
-                                content={item['galPhotographyLocation']}
-                                hashtags= {item['galSearchKeyword']}
-                        />
-                    );
-                    setCards(dataCards);
+            const resp = await fetch(url);
+            const data = await(resp.json());
+            console.log(data.response.body.items.item);
+            const dataAll = data.response.body.items.item;
+            const dataCards = dataAll.map(item => 
+                //console.log(item['galTitle'])
+                <TailCard
+                        key={item['galTitle']} 
+                        imgUrl={item['galWebImageUrl']}
+                        title={item['galTitle']}
+                        content={item['galPhotographyLocation']}
+                        hashtags= {item['galSearchKeyword']}
+                />
+            );
+            setCards(dataCards);
 
-                })
-                .catch(err=>console.log(err))
+
+            // fetch(url)
+            //     .then(resp => resp.json())
+            //     .then(data => {
+            //         console.log(data.response.body.items.item);
+            //         const dataAll = data.response.body.items.item;
+            //         const dataCards = dataAll.map(item => 
+            //             //console.log(item['galTitle'])
+            //             <TailCard
+            //                     key={item['galTitle']} 
+            //                     imgUrl={item['galWebImageUrl']}
+            //                     title={item['galTitle']}
+            //                     content={item['galPhotographyLocation']}
+            //                     hashtags= {item['galSearchKeyword']}
+            //             />
+            //         );
+            //         setCards(dataCards);
+
+            //     })
+            //     .catch(err=>console.log(err))
 
         }
     }
@@ -57,7 +74,7 @@ export default function Gallery() {
     }, []);
 
     return (
-        <div className='w-full flex flex-col items-center justify-center'>
+        <div className='w-full flex flex-col items-center justify-center pb-10'>
 
 
             <div className='w-10/12 flex flex-col items-center justify-center'>

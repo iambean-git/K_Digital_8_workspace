@@ -26,7 +26,7 @@ export default function TailCard({imgUrl, title, content, hashtags}) {
 
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
 
-            <img className="rounded-t-lg" 
+            <img className="rounded-t-lg h-64 w-full" 
                  src={imgUrl} 
                  alt="" />
 
