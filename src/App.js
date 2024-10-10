@@ -11,7 +11,8 @@ import homeImg from'./home.png';
 // import MyBox from './08/MyBox';
 // import Traffic from './09/Traffic';
 // import MyRef from './10/MyRef';
-import Gallery from './11/Gallery';
+// import Gallery from './11/Gallery';
+import BusanFestival from './12/BusanFestival';
 
 function App() {
   return (
@@ -43,11 +44,12 @@ function App() {
         {/* <MyBox /> */}
         {/* <Traffic /> */}
         {/* <MyRef /> */}
-        <Gallery />
+        {/* <Gallery /> */}
+        <BusanFestival />
         
       </main>
       
-      <footer className='w-full h-20 flex justify-center items-center
+      <footer className='w-full h-20 flex justify-center items-center flex-shrink-0
                         bg-gray-800 text-white'>
         <p>K-digital 8기 조은빈</p>       
       </footer>
