@@ -29,7 +29,7 @@ export default function Lotto() {
     setPlus(spanPlus);
     const secBonus = bonusNum.map(item => <TailBall key='bonus' n={item} />);
     setBonus(secBonus);
-    console.log("bonus is ", bonusNum);
+    //console.log("bonus is ", bonusNum);
     
     //교수님은 + 넣는거 다른 방식으로 하셨음
     //보너스를 arr에 다시 합쳐서 7개의 숫자 배열에
