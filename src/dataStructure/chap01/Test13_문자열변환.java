@@ -22,4 +22,4 @@ public class Test13_문자열변환 {
 		String s2 = String.valueOf(num);
 		String s4 = String.format("%d", num);
 		}
-}
+}	
