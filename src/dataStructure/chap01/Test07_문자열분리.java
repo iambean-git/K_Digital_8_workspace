@@ -27,4 +27,5 @@ public class Test07_문자열분리 {
 		System.out.println(company);
 
 	}
+	
 }
