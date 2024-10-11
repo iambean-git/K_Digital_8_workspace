@@ -12,7 +12,8 @@ import homeImg from'./home.png';
 // import Traffic from './09/Traffic';
 // import MyRef from './10/MyRef';
 // import Gallery from './11/Gallery';
-import BusanFestival from './12/BusanFestival';
+// import BusanFestival from './12/BusanFestival';
+import RouteMain from './13/RouteMain';
 
 function App() {
   return (
@@ -45,7 +46,8 @@ function App() {
         {/* <Traffic /> */}
         {/* <MyRef /> */}
         {/* <Gallery /> */}
-        <BusanFestival />
+        {/* <BusanFestival /> */}
+        <RouteMain />
         
       </main>
       
