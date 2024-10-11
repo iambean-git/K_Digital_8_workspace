@@ -38,7 +38,7 @@ export default function Lotto() {
 
    
   return (
-    <div className="w-full">
+    <div className="w-full h-screen flex flex-col justify-center items-center">
       <div className="flex justify-center items-center mb-14">
         {tags}
         {plus}
