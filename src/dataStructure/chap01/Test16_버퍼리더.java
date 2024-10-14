@@ -21,6 +21,7 @@ public class Test16_버퍼리더 {
 			System.out.println(s2);
 			System.out.println("");
 			String[] sa = s2.split(",|\n");
+			System.out.println("trim");
 			for (String x : sa) {
 				x = x.trim();
 				System.out.print(" " + x);

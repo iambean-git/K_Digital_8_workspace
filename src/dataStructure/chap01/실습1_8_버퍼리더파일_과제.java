@@ -34,24 +34,23 @@ public class 실습1_8_버퍼리더파일_과제 {
             int len;
         	
             // 파일의 내용을 ByteArrayOutputStream에 읽기
+            //len이 -1을 반환하면 문서의 끝(EOF)을 의미
             while((len=in.read(buf)) !=-1) {
             	out.write(buf, 0 , len);
             }
 
             // ByteArrayOutputStream의 내용을 문자열로 변환
             String fileContent = out.toString("UTF-8");
-            System.out.println("filecontent is ");
-            System.out.println(fileContent);
             // 공백으로 구분된 서브스트링을 배열로 변환하고 정렬
-            String[] strList = fileContent.split(" \n");
+            // 공백문자(\\s+) 는 공백,탭,개행문자 등을 포함
+            String[] strList = fileContent.split("\\s+");
+            Arrays.sort(strList);
             return strList;
            
-            
         } catch (IOException e) {
             e.printStackTrace();
             return new String[0];  // 오류 발생 시 빈 배열 반환
         }
-//		return null;
     }
 
     // 문자열 배열을 정수 배열로 변환하고 정렬하는 함수
@@ -67,7 +66,8 @@ public class 실습1_8_버퍼리더파일_과제 {
     // 문자열 배열 출력 함수
     private static void printStringArray(String[] strL) {
 		for (String s : strL) {
-			System.out.print(s + " ");
+			s=s.trim();
+			System.out.print(s.trim() + " ");
 		}
 		System.out.println();
 	}
@@ -89,8 +89,8 @@ public class 실습1_8_버퍼리더파일_과제 {
         printStringArray(sortedStringArray);
         
         // 문자열 배열을 정수 배열로 변환하고 정렬 후 출력
-//        int[] sortedIntArray = convertSortToInt(sortedStringArray);
-//        System.out.println("정렬된 정수 배열:");
-//        printIntArray(sortedIntArray);
+        int[] sortedIntArray = convertSortToInt(sortedStringArray);
+        System.out.println("정렬된 정수 배열:");
+        printIntArray(sortedIntArray);
     }
 }
