@@ -19,6 +19,7 @@ public class Test16_버퍼리더 {
 			byte[] arr = out.toByteArray();
 			String s2 = new String(buf);
 			System.out.println(s2);
+			System.out.println("");
 			String[] sa = s2.split(",|\n");
 			for (String x : sa) {
 				x = x.trim();
@@ -26,6 +27,7 @@ public class Test16_버퍼리더 {
 			}
 			System.out.println();
 			String s = new String(arr);
+			System.out.println();
 			System.out.println(s);
 
 		} catch (Exception e) {
