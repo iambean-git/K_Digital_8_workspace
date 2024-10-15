@@ -65,9 +65,12 @@ public class Hw02_2_14_객체배열정렬 {
 				new PhyscData("다정해", 169, 0.5),
 		};
 		showData("정렬전",data);
-		sortData(data);
+		//sortData(data);
+		Arrays.sort(data);
 		showData("정렬후", data);
-		int resultIndex = binarySearch(data, "사이다");
+		Arrays.sort(data);
+		//int resultIndex = binarySearch(data, "사이다");
+		int resultIndex = Arrays.binarySearch(data, "사이다" );
 		System.out.println("사이다의 index : " + resultIndex);
 		PhyscData[] newData= insertObject(data, new PhyscData("소주다", 179, 1.5));//배열의 사이즈를 1개 증가시킨후 insert되는 객체 보다 큰 값들은 우측으로 이동, 사이즈가 증가된 객체 배열을 리턴
 		showData("삽입후", newData);	
