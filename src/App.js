@@ -14,6 +14,8 @@ import Traffic from './09/Traffic';
 import Gallery from './11/Gallery';
 import BusanFestival from './12/BusanFestival';
 // import RouteMain from './13/RouteMain';
+import Fcst from './14/Fcst';
+import FcstList from './14/FcstList';
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -31,7 +33,7 @@ function App() {
           </p>
           <ul className='flex gap-3 text font-semibold'>
             <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
-              <Link to='/clock'>시계</Link></li>
+              <Link to='/'>시계</Link></li>
             <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
               <Link to='/lotto'>로또</Link></li>
             <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
@@ -44,6 +46,8 @@ function App() {
               <Link to='/tour'>관광정보</Link></li>
             <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
               <Link to='/festival'>부산축제</Link></li>
+            <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
+              <Link to='/fcst'>일기예보</Link></li>
           </ul>
           <a href='' className='h-3/6 pr-4'>
             <Link to='/'> <img src={homeImg} alt='homeImg' className='h-5/6' ></img> </Link>
@@ -69,14 +73,15 @@ function App() {
           {/* <RouteMain /> */}
           <Routes>
             {/* <Route path='/' element={<App/>} /> */}
-            <Route path='/clock' element={<MyClock/>} />
+            <Route path='/' element={<MyClock/>} />
             <Route path='/lotto' element={<Lotto/>} />
             <Route path='/foodbank' element={<FoodMain/>} />
             <Route path='/boxoffice' element={<BoxOffice/>} />
             <Route path='/traffic' element={<Traffic/>} />
             <Route path='/tour' element={<Gallery/>} />
             <Route path='/festival' element={<BusanFestival/>} />
-
+            <Route path='/fcst' element={<Fcst/>} />
+            <Route path='/fcstlist' element={<FcstList/>} />
           </Routes>
           
         </main>
