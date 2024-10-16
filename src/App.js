@@ -49,9 +49,9 @@ function App() {
             <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
               <Link to='/fcst'>일기예보</Link></li>
           </ul>
-          <a href='' className='h-3/6 pr-4'>
+          <div className='h-3/6 pr-4'>
             <Link to='/'> <img src={homeImg} alt='homeImg' className='h-5/6' ></img> </Link>
-          </a>
+          </div>
         </header>
 
         <main className='w-full grow flex flex-col items-center

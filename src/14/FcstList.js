@@ -30,7 +30,7 @@ export default function FcstList() {
 
     const setOptions = (sortq) => {
         let options = getcodeData.filter(i => i["예보구분"] == sortq)
-            .map(i => <option key={i["항목값"]} value={i["항목명"] + "," + i["항목값"]} >{i["항목명"]}({i["항목값"]})</option>);
+            .map(i => <option key={i["항목값"]} value={i["항목값"]} >{i["항목명"]}({i["항목값"]})</option>);
         setOpts(options);
     }
 
@@ -41,7 +41,7 @@ export default function FcstList() {
         url = `${url}serviceKey=${apiKey}&pageNo=1&numOfRows=1000&dataType=JSON&`;
         url = `${url}base_date=${selDate}&base_time=0500&nx=${nx}&ny=${ny}`;
 
-        console.log(url);
+        //console.log(url);
 
         const resp = await fetch(url);
         const data = await (resp.json());
@@ -50,25 +50,28 @@ export default function FcstList() {
     }
 
     const setTableData = () => {
-        let tm = selRef.current.value.split(',');
-        const code = tm[1];
-        const codeTxt = tm[0];
-        //console.log("code");     console.log(code);
+        let code = selRef.current.value;
         //console.log("txt");     console.log(codeTxt);
 
         const selected = tdata.filter(i => i['category'] == code);
-        console.log("selected"); console.log(selected);
-        const tags = selected.map((i,idx) => <tr key={i['category']+idx} className="bg-white border-b">
+        const codeInfo = getcodeData.filter(i=>i['항목값']===code)[0];
+        //console.log("selected"); console.log(selected);
+        //console.log("codeInfo"); console.log(codeInfo);
+        const tags = selected.map((i,idx) => <tr key={i['category']+idx} className="bg-white border-b hover:bg-gray-50">
             <th scope="row" className="px-6 py-4 font-normal whitespace-nowrap ">
-                {codeTxt}
+                {codeInfo.항목명 }
             </th>
             <td className="px-6 py-4">
-                {i['fcstTime']}
+                {i['fcstDate'].substring(0,4)+"-"+i['fcstDate'].substring(4,6)+"-"+i['fcstDate'].substring(6,8)}
+            </td>
+            <td className="px-6 py-4">
+                {i['fcstTime'].substring(0,2) + " : " + i['fcstTime'].substring(2,)}
             </td>
             <td className="px-6 py-4">
                 {code==="SKY"? skyValue[i['fcstValue']]:
                 code==='PTY'&&sortq==='단기예보'?  ptyValueShort[i['fcstValue']] : 
-                code==='PTY'&&sortq==='초단기예보'?  ptyValueUshort[i['fcstValue']] : i['fcstValue']}
+                code==='PTY'&&sortq==='초단기예보'?  ptyValueUshort[i['fcstValue']] : 
+                i['fcstValue'] + codeInfo.단위}
             </td>
         </tr>);
         setTrs(tags);
@@ -97,9 +100,12 @@ export default function FcstList() {
                                 항목명
                             </th>
                             <th scope="col" className="px-6 py-3">
+                                예측날짜
+                            </th>
+                            <th scope="col" className="px-6 py-3">
                                 예측시간
                             </th>
-                            <th scope="col" className="px-6 py-3 border-b">
+                            <th scope="col" className="px-6 py-3">
                                 항목값
                             </th>
 
