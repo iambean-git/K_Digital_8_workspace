@@ -28,7 +28,7 @@ function App() {
         <header className='w-full h-20 flex justify-between items-center
                           bg-slate-200'> 
           
-          <p className='text-2xl font-bold p-5'>
+          <p className='text-sm whitespace-nowrap lg:text-2xl font-bold p-5'>
           K-digital 8기
           </p>
           <ul className='flex gap-3 text font-semibold'>

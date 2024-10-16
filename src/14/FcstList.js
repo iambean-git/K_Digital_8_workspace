@@ -1,9 +1,12 @@
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import getcodeData from './getcode.json';
 import { useEffect, useState, useRef } from "react";
 
 export default function FcstList() {
-
+    const skyValue = ['','🌞 맑음','⛅ 구름약간','☁ 구름많음','🌫 흐림'];
+    const ptyValueShort = ['없음', '☂ 비', '🌨 비/눈', '❄ 눈', '🌧 소나기'];
+    const ptyValueUshort = ['없음', '비', '비/눈','눈','-',
+                            '빗방울', '빗방울눈날림','눈날림'];
     const [tdata, setTdt] = useState([]);
     const [options, setOpts] = useState([]);
     const [trs, setTrs] = useState([]);
@@ -14,6 +17,7 @@ export default function FcstList() {
     //쿼리 값 가져오는 쉬운 방법
     const area = sparams.get('area');
     const selDate = sparams.get('date');
+    const dateText = selDate.substring(0,4)+"-"+selDate.substring(4,6)+"-"+selDate.substring(6,8);
     const gubun = sparams.get('sortq');
     const nx = sparams.get('nx');
     const ny = sparams.get('ny');
@@ -41,7 +45,7 @@ export default function FcstList() {
 
         const resp = await fetch(url);
         const data = await (resp.json());
-        console.log("data 입니다"); console.log(data.response.body.items.item);
+        //console.log("data 입니다"); console.log(data.response.body.items.item);
         setTdt(data.response.body.items.item);
     }
 
@@ -54,7 +58,7 @@ export default function FcstList() {
 
         const selected = tdata.filter(i => i['category'] == code);
         console.log("selected"); console.log(selected);
-        const tags = selected.map(i => <tr className="bg-white border-b">
+        const tags = selected.map((i,idx) => <tr key={i['category']+idx} className="bg-white border-b">
             <th scope="row" className="px-6 py-4 font-normal whitespace-nowrap ">
                 {codeTxt}
             </th>
@@ -62,20 +66,21 @@ export default function FcstList() {
                 {i['fcstTime']}
             </td>
             <td className="px-6 py-4">
-                {i['fcstValue']}
+                {code==="SKY"? skyValue[i['fcstValue']]:
+                code==='PTY'&&sortq==='단기예보'?  ptyValueShort[i['fcstValue']] : 
+                code==='PTY'&&sortq==='초단기예보'?  ptyValueUshort[i['fcstValue']] : i['fcstValue']}
             </td>
         </tr>);
         setTrs(tags);
-
     }
-
 
     return (
         <div className="w-10/12">
             <div className=" flex justify-between px-10 my-10">
-                <h1 className="text-2xl font-bold"> {sortq} : {area} ({selDate})   </h1>
+                <h1 className="text-2xl font-bold whitespace-nowrap"> {sortq} : {area} ({dateText})   </h1>
                 <select name="sele" onChange={setTableData} ref={selRef}
-                    className="form-select w-1/3">
+                    className="form-select w-1/3
+                                bg-gray-50 border-2 border-gray-300  text-gray-900 text-sm rounded-lg">
                     <option defaultValue='noRegion' hidden >
                         선택
                     </option>
@@ -83,8 +88,7 @@ export default function FcstList() {
                 </select>
             </div>
 
-
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-10">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">
 
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
@@ -95,7 +99,7 @@ export default function FcstList() {
                             <th scope="col" className="px-6 py-3">
                                 예측시간
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-b">
                                 항목값
                             </th>
 
