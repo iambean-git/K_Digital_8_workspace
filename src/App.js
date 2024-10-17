@@ -3,7 +3,7 @@ import homeImg from'./home.png';
 
 // import Hello from './01/Hello';
 import MyClock from './02/MyClock';
-// import MyDiv1 from './03/MyDiv11';
+import MyDiv1 from './03/MyDiv11';
 // import MyList from './04/MyList';
 import Lotto from './05/Lotto';
 import FoodMain from './06/FoodMain';
@@ -16,6 +16,7 @@ import BusanFestival from './12/BusanFestival';
 // import RouteMain from './13/RouteMain';
 import Fcst from './14/Fcst';
 import FcstList from './14/FcstList';
+import Recoil1 from './15/RecoilMain';
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -82,6 +83,8 @@ function App() {
             <Route path='/festival' element={<BusanFestival/>} />
             <Route path='/fcst' element={<Fcst/>} />
             <Route path='/fcstlist' element={<FcstList/>} />
+            <Route path='/MyDiv1' element={<MyDiv1/>} />
+            <Route path='/Recoil1' element={<Recoil1/>} />
           </Routes>
           
         </main>
