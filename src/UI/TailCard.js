@@ -8,13 +8,13 @@ export default function TailCard({imgUrl, title, content, hashtags}) {
     // } else words.push(hashtags);
 
     //삼항연산자로 자르기
-    const words = hashtags.indexOf(',') != -1 ? hashtags.split(',') : [hashtags];
+    const words = hashtags.indexOf(',') !== -1 ? hashtags.split(',') : [hashtags];
 
     // console.log("완성된 리스트 : ", words);
 
     
     //태그가 없는 경우 빈 span이 출력되지 않도록 
-        let tags =  words.length == 1 && words[0] == "" ? "":        
+        let tags =  words.length === 1 && words[0] === "" ? "":        
         words.map(item => 
         <span key={item}
               className="inline-flex text-xs text-gray-700 bg-gray-200 px-2 py-1 m-1 rounded-lg ">
