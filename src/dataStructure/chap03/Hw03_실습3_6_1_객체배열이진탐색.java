@@ -44,7 +44,7 @@ class PhyscData2 implements Comparable<PhyscData2>{
 	}
 }
 
-public class Hw01_실습3_6_1_객체배열이진탐색 {
+public class Hw03_실습3_6_1_객체배열이진탐색 {
 	public static void main(String[] args) {
 		PhyscData2[] data = {
 				new PhyscData2("홍길동", 162, 0.3),

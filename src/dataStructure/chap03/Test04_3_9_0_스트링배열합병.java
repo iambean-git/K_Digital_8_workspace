@@ -21,21 +21,35 @@ public class Test04_3_9_0_스트링배열합병 {
     static void showList(String msg, String[] arr) {
     	System.out.print(msg);
     	for (String s: arr)
-    		System.out.print( s + " ");
+    		if(s!=null)
+    			System.out.print( s + " ");
     	System.out.println();
     }
     
     static String[] mergeList(String[] arr1, String[] arr2) {
     	String[] merged = new String[arr1.length+arr2.length];
     	
-    	for(int i=0; i<arr1.length; i++) {
-    		merged[i] = arr1[i];
-    	}
-    	for(int j=0; j<arr2.length; j++) {
-    		merged[j+arr1.length] = arr2[j];
+    	int i = 0, j = 0, k=0;
+    	while(i<arr1.length && j<arr2.length) {
+    		if(arr1[i].equals(arr2[j])) {
+    			merged[k] = arr1[i];
+    			i++;	j++;	k++;
+    		} else if (arr1[i].compareTo(arr2[j])<0) {
+    			merged[k] = arr1[i];
+    			k++; i++;
+    		} else {
+    			merged[k] = arr2[j];
+    			k++; j++;
+    		}
     	}
     	
-    	Arrays.sort(merged);
+    	while (i < arr1.length) {
+            merged[k++] = arr1[i++];
+        }
+        
+        while (j < arr2.length) {
+            merged[k++] = arr2[j++];
+        }
     	
     	return merged;
     }
