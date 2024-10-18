@@ -1,4 +1,4 @@
-package chap1_기본알고리즘;
+package dataStructure.chap01;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class 실습1_8_Test_chap12_04버퍼리더 {
+public class 실습1_8_버퍼리더파일_과제_ver2 {
 
     // 파일을 읽어 각 라인을 공백으로 분리하여 정렬하는 함수
     public static String[] readSortFromFile(String filename) {
@@ -51,17 +51,31 @@ public class 실습1_8_Test_chap12_04버퍼리더 {
     }
 
     // 문자열 배열을 정수 배열로 변환하고 정렬하는 함수
-    public static int[] convertSortToInt(String[] stringArray) {
+    public static int[] convertSortToInt(String[] strL) {
+    	int[] listInt = new int[strL.length];
+		for (int i=0; i<strL.length; i++) {
+			listInt[i] = Integer.parseInt(strL[i]);
+		}
+		Arrays.sort(listInt);
+		return listInt;
 
     }
 
     // 문자열 배열 출력 함수
-    public static void printStringArray(String[] array) {
+    public static void printStringArray(String[] strL) {
+    	for (String s : strL) {
+			s=s.trim();
+			System.out.print(s.trim() + " ");
+		}
+		System.out.println();
 
     }
 
     // 정수 배열 출력 함수
-    public static void printIntArray(int[] array) {
+    public static void printIntArray(int[] intL) {
+    	for(int i:intL) {
+			System.out.print(i + " ");
+		}
 
     }
 

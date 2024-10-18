@@ -6,7 +6,7 @@ package dataStructure.chap03;
  */
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 public class Test05_3_9_스트링리스트정렬 {
 
