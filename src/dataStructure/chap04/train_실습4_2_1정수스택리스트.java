@@ -119,7 +119,7 @@ class IntStack4 {
 	public void dump() throws EmptyIntStackException{
 		if (isEmpty()) {
 			System.out.println("스택이 비어있습니다.");
-			throw new EmptyIntStackException("peek: stack empty");
+			throw new EmptyIntStackException("dump: stack empty");
 		}
 		else {
 			//추가할 부분

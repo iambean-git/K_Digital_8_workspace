@@ -1,4 +1,4 @@
-package Chap4_스택과큐;
+package dataStructure.chap04;
 /*
  * 실습 4_6번 객체 원형 큐를 배열로 구현
  * 교재 148 실습 4_3은 정수 원형 큐를 배열로 구현한 코드임 > 객체 버젼으로 구현
@@ -14,6 +14,18 @@ import java.util.Scanner;
 class Point3 {
 	private int ix;
 	private int iy;
+	
+	public Point3(int ix, int iy) {
+		super();
+		this.ix = ix;
+		this.iy = iy;
+	}
+
+	@Override
+	public String toString() {
+		return "[ix=" + ix + ", iy=" + iy + "]";
+	}
+
 
 }
 
@@ -27,64 +39,85 @@ class objectQueue2 {
 
 //--- 실행시 예외: 큐가 비어있음 ---//
 	public class EmptyQueueException extends RuntimeException {
-		public EmptyQueueException() {
+		public EmptyQueueException(String msg) {
+			super(msg);
 		}
 	}
 
 //--- 실행시 예외: 큐가 가득 찼음 ---//
 	public class OverflowQueueException extends RuntimeException {
-		public OverflowQueueException() {
+		public OverflowQueueException(String msg) {
+			super(msg);
 		}
 	}
 
 //--- 생성자(constructor) ---//
 public objectQueue2(int maxlen) {
-
+	front = rear = 0;
+	capacity = maxlen;
+	
+	try {
+		que = new Point3[capacity];
+	} catch(OutOfMemoryError e) {
+		capacity = 0;
+	}
 }
 
-//--- 큐에 데이터를 인큐 ---//
+	//--- 큐에 데이터를 인큐 ---//
 	public int enque(Point3 x) throws OverflowQueueException {
-
+		if(isFull())
+			throw new OverflowQueueException("enque : queue overflow");
+		que[rear++] = x;
+				
+		return 1;
 	}
 
-//--- 큐에서 데이터를 디큐 ---//
+	//--- 큐에서 데이터를 디큐 ---//
 	public Point3 deque() throws EmptyQueueException {
-
+		if(isEmpty())
+			throw new EmptyQueueException("deque: queue empty");
+		
+		return que[front++];
+		//deque된 공간들이 빈공간으로 버려짐 -> 비효율적 : 그래서 원형큐로 하는게 낫다
 	}
 
-//--- 큐에서 데이터를 피크(프런트 데이터를 들여다봄) ---//
+	//--- 큐에서 데이터를 피크(프런트 데이터를 들여다봄) ---//
 	public Point3 peek() throws EmptyQueueException {
-
+		if(isEmpty())
+			throw new EmptyQueueException("peek: queue empty");
+		return que[front];
 	}
 
-//--- 큐를 비움 ---//
+	//--- 큐를 비움 ---//
 	public void clear() {
-		num = front = rear = 0;
+		front = rear = 0;
 	}
 
-//--- 큐에서 x를 검색하여 인덱스(찾지 못하면 –1)를 반환 ---//
+	//--- 큐에서 x를 검색하여 인덱스(찾지 못하면 –1)를 반환 ---//
 	public int indexOf(Point3 x) {
-
+		for(int i=front; i<rear; i++) {
+			if(que[i].equals(x)) return i;
+		} return -1;
 	}
 
-//--- 큐의 크기를 반환 ---//
+	//--- 큐의 크기를 반환 ---//
 	public int getCapacity() {
 		return capacity;
 	}
 
-//--- 큐에 쌓여 있는 데이터 개수를 반환 ---//
+	//--- 큐에 쌓여 있는 데이터 개수를 반환 ---//
 	public int size() {
-		return num;
+		return rear-front;
 	}
 
 //--- 큐가 비어있는가? ---//
 	public boolean isEmpty() {
-		return num <= 0;
+		return (front==rear) &&( !(rear==capacity) );
 	}
 
 //--- 큐가 가득 찼는가? ---//
 	public boolean isFull() {
-		return num >= capacity;
+		return rear==capacity;
 	}
 
 //--- 큐 안의 모든 데이터를 프런트 → 리어 순으로 출력 ---//

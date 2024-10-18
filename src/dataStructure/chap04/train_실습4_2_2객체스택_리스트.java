@@ -177,6 +177,7 @@ public class train_실습4_2_2객체스택_리스트 {
 					s.push(p);
 					System.out.println(p.toString());
 				} catch(objectStack.OverflowGenericStackException e) {
+					//e.printStackTrace();
 					System.out.println("stack이 가득찼있습니다.");
 				}
 				break;
