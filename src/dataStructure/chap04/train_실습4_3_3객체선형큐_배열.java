@@ -112,16 +112,19 @@ public objectQueue2(int maxlen) {
 
 //--- 큐가 비어있는가? ---//
 	public boolean isEmpty() {
-		return (front==rear) &&( !(rear==capacity) );
+		return (front==rear);
 	}
 
 //--- 큐가 가득 찼는가? ---//
 	public boolean isFull() {
-		return rear==capacity;
+		return (rear==capacity) && (front==0);
 	}
 
 //--- 큐 안의 모든 데이터를 프런트 → 리어 순으로 출력 ---//
 	public void dump() {
+		for(int i=front; i<rear; i++) {
+			System.out.println(que[i] + " ");
+		}
 
 	}
 }

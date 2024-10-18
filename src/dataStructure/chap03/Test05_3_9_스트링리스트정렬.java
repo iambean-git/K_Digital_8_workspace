@@ -45,7 +45,6 @@ public class Test05_3_9_스트링리스트정렬 {
 	    static String[] removeDuplicateList(List<String> list) {//중복 제거
 		    String cities[] = new String[0];//empty 배열을 cities 참조 변수가 가리킨다
 		    cities = list.toArray(cities);//toArray()함수는 list를 배열로 만들때 더 큰 배열이 필요하면 새로 할당된 배열을 리턴
-		    
 		    return cities;
 	    }
 		public static void main(String[] args) {
