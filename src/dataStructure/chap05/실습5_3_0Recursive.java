@@ -10,16 +10,36 @@ import java.util.Scanner;
 
 class 실습5_3_0Recursive {
  //--- 순수 재귀 메서드 ---//
+// static void recur(int n) {
+//     if (n > 0) {
+//    	 System.out.println("recur(" + n + " - 1) 호출됨");
+//         recur(n - 1);
+//         System.out.println("n = " + n);
+//         System.out.println("recur(" + n + " - 2) 호출됨");
+//         recur(n - 2);
+//     }
+// }
+
+	
+	 //--- while문 활용해서 비재귀적 표현으로 바꾸기 ---//
  static void recur(int n) {
-     if (n > 0) {
-    	 System.out.println("recur(" + n + " - 1) 호출됨");
-         recur(n - 1);
-         System.out.println("n = " + n);
-         System.out.println("recur(" + n + " - 2) 호출됨");
-         recur(n - 2);
+     IntStack s = new IntStack(n);
+	 while (n > 0) {
+		 if(n>0) {
+			 s.push(n);
+	    	 n = n -1;
+	    	 continue;
+		 }
+		 if(!s.isEmpty()) {
+			 n = s.pop();
+			 System.out.println(n);
+			 System.out.println("n = " + n);`
+	         n = n - 2;
+		 }
+		 break;
      }
  }
-
+ 
  public static void main(String[] args) {
      Scanner stdIn = new Scanner(System.in);
      // 처음에는 n = 2,3에 대하여 실행한다 다음에 5에 대하여 
