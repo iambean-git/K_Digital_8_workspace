@@ -73,43 +73,33 @@ public class train_5_7_1KnightTracking_실습 {
         // 나이트가 이동할 수 있는 8가지 방향
         
         Stack<Point> stack = new Stack<>();
+        int count = 0;
 
         // 시작 위치를 스택에 푸시
         stack.push(new Point(startX, startY, 0));
         board[startX][startY] = 0; // 시작 위치는 첫 번째 이동
-
+        int moveNum = stack.peek().moveToward;
+        
         while (!stack.isEmpty()) {
+            if(count==16) {
+            	System.out.println("끝");
+            	break;
+            }
             
-            // 8가지 방향으로 나이트 이동 시도
-        	int moveNum = stack.peek().moveToward;
-        	int moveX = moves[moveNum].a;
+            int moveX = moves[moveNum].a;
         	int moveY = moves[moveNum].b;
-           
-        	if(isSafe(startX+moveX, startY+moveY)) {
-        		startX += moveX;
+            
+            if(isSafe(startX+moveX, startY+moveY)) {	//다음칸 갈수없음
+            	
+            } else {	//다음칸 갈수있음
+            	startX += moveX;
         		startY += moveY;
         		board[startX][startY] = 0;
-        		stack.push(new Point(startX, startY,0));
-        		
-        	} else {
-        		stack.pop();
-        		moveNum += 1;
-        		stack.push(new Point(startX, startY, moveNum));
-        	}
-
-            // 더 이상 이동할 곳이 없을 경우
-           if(moveNum>7) {
-        	   System.out.println("break");
-        	   stack.pop();
-        	   Point tmp = stack.pop();
-        	   startX = tmp.x;
-        	   startY = tmp.y;
-        	   // stack에 12개 찼을 때부터 체크체크체크
-        	   //Todo :: -1로 다시 바꾸는게 필요함
-        	   moveNum = tmp.moveToward+1;
-        	   stack.push(new Point(startX, startY, moveNum));
-        	   
-           }
+        		stack.push(new Point(startX, startY,0));            	
+            }
+            
+           
+           
         }
 
         return false; // 해결하지 못함
@@ -118,6 +108,18 @@ public class train_5_7_1KnightTracking_실습 {
     // 결과 출력
     private static void showTracking() {
 
+    }
+    
+    
+    //배열출력
+    private static void showData() {
+    	for(int i=0; i<board.length; i++) {
+    		for(int j=0; j<board[0].length; j++) {
+    			System.out.print(board[i][j] + " ");
+    		}
+    		System.out.println();
+    	}
+    	System.out.println();
     }
 
     public static void main(String[] args) {
