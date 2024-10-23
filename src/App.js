@@ -17,6 +17,7 @@ import BusanFestival from './12/BusanFestival';
 import Fcst from './14/Fcst';
 import FcstList from './14/FcstList';
 import Recoil1 from './15/RecoilMain';
+import Rest from './16/Rest';
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -49,6 +50,8 @@ function App() {
               <Link to='/festival'>부산축제</Link></li>
             <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
               <Link to='/fcst'>일기예보</Link></li>
+            <li className='p-2 hover:bg-slate-700 hover:text-white hover:rounded-md'>
+              <Link to='/rest'>Restfull</Link></li>
           </ul>
           <div className='h-3/6 pr-4'>
             <Link to='/'> <img src={homeImg} alt='homeImg' className='h-5/6' ></img> </Link>
@@ -85,6 +88,7 @@ function App() {
             <Route path='/fcstlist' element={<FcstList/>} />
             <Route path='/MyDiv1' element={<MyDiv1/>} />
             <Route path='/Recoil1' element={<Recoil1/>} />
+            <Route path='/Rest' element={<Rest/>} />
           </Routes>
           
         </main>
