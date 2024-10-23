@@ -6,6 +6,7 @@ export default function TailButton({ caption, color, handleClick, size }) {
         'violet' : 'bg-violet-400/10 border-solid border-violet-400 border-2 text-violet-400',
         'whiteViolet' : 'bg-violet-100 border-solid border-violet-400 border-2 text-violet-400',
         'filledViolet' : 'bg-violet-400 border-2 border-violet-400 text-white',
+        'filledorange' : 'bg-orange-400 border-2 border-orange-400 text-white'
     }
 
     const btColorHover = {
@@ -15,6 +16,7 @@ export default function TailButton({ caption, color, handleClick, size }) {
         'violet' : 'hover:bg-violet-400 hover:border-2 hover:border-violet-400 hover:text-white',
         'whiteViolet' : "hover:bg-violet-400 hover:border-2 hover:border-violet-400 hover:text-white",
         'filledViolet' : 'hover:bg-violet-400/10 hover:border-solid hover:border-violet-400 hover:border-2 hover:text-violet-400',
+        'filledorange' : 'hover:bg-orange-100 hover:border-solid hover:border-orange-400 hover:border-2 hover:text-orange-400',
     }
 
     return (
