@@ -9,6 +9,7 @@ if (!loginId.equals("")){
 	cookieCheck = "checked"; 
 }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
