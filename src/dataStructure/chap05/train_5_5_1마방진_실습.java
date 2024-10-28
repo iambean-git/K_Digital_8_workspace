@@ -26,6 +26,14 @@ public class train_5_5_1마방진_실습 {
         for (int num = 1; num <= n * n; num++) {
             magicSquare[row][col] = num; // 현재 위치에 숫자 배치
             //구현
+            int nextRow = (row-1<0)? n-1 : row-1;
+            int nextCol = (col+1>=n)? 0 : col+1;
+            
+            if(magicSquare[nextRow][nextCol] == 0) {
+            	row = nextRow;	col = nextCol;
+            } else {
+            	row++;
+            }  
         }
 
         // 마방진 출력
@@ -40,10 +48,43 @@ public class train_5_5_1마방진_실습 {
     // 마방진 출력 메서드
     static void showSquare(int[][] magicSquare) {
     	//구현
+    	for(int i=0; i<magicSquare.length; i++) {
+    		for(int j=0; j<magicSquare[0].length; j++) {
+    			System.out.print(magicSquare[i][j] + " ");
+    		}
+    		System.out.println();
+    	}
     }
 
     // 마방진 유효성 검증 메서드
     static boolean checkSquare(int[][] magicSquare, int magicSum) {
-    	// 구현 
+    	//가로 합 검사
+    	int n = magicSquare.length;
+    	int[] sumRows = new int[n];
+    	int[] sumCols = new int[n];
+    	int sumDiag1 = 0; int sumDiag2 = 0;
+    	
+    	for(int i=0; i<n; i++) {
+    		for(int j=0; j<n; j++) {
+    			sumRows[i] += magicSquare[i][j];
+    			sumCols[j] += magicSquare[i][j];
+    			
+    			if(i==j)	sumDiag1 +=  magicSquare[i][j];
+    			if(i+j==n-1)	sumDiag2 +=  magicSquare[i][j];
+    		}
+    		//가로 검사
+    		if(sumRows[i]!=magicSum)	return false;
+    	}
+    	
+    	//대각선 검사
+    	if(sumDiag1 != magicSum || sumDiag2 != magicSum)	return false;
+    	
+    	//세로 검사
+    	for(int i = 0; i<n; i++) {
+    		if(sumCols[i] != magicSum)	return false;
+    	}
+		
+    	//다 통과하면 
+		return true;
     }
 }

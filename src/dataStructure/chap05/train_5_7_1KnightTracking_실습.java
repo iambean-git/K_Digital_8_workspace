@@ -28,7 +28,8 @@ class Offsets4 {
 }
 public class train_5_7_1KnightTracking_실습 {
    static Offsets4[] moves = new Offsets4[8];//static을 선언하는 이유를 알아야 한다
-    static final int N = 5;
+    static final int N = 8;
+    //7일때는 약 2분, 8일때는 약 11분에 걸쳐 결과가 나옴
 
    
     // 체스판 배열
@@ -81,6 +82,10 @@ public class train_5_7_1KnightTracking_실습 {
         
        
         while (!stack.isEmpty()) {
+	    	if(count==N*N) {
+	            return true;
+	         }
+        	
            //showData();
            Point current = stack.peek();
            int curX = current.x;
@@ -108,9 +113,7 @@ public class train_5_7_1KnightTracking_실습 {
               count--;
            }
            
-           if(count==N*N) {
-              return true;
-           }
+           
         }
         return false; // 해결하지 못함
     }
