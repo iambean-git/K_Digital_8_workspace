@@ -28,7 +28,7 @@ class Offsets4 {
 }
 public class train_5_7_1KnightTracking_실습 {
    static Offsets4[] moves = new Offsets4[8];//static을 선언하는 이유를 알아야 한다
-    static final int N = 8;
+    static final int N = 7;
     //7일때는 약 2분, 8일때는 약 11분에 걸쳐 결과가 나옴
 
    
@@ -123,7 +123,8 @@ public class train_5_7_1KnightTracking_실습 {
     private static void showTracking() {
        for(int i=0; i<board.length; i++) {
           for(int j=0; j<board[0].length; j++) {
-             System.out.print(board[i][j] + " ");
+             System.out.printf("%2d",board[i][j]);
+             System.out.print(" ");
           }
           System.out.println();
        }
