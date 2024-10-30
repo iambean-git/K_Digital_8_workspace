@@ -33,7 +33,7 @@ class 실습5_3_0Recursive {
 		 if(!s.isEmpty()) {
 			 n = s.pop();
 			 System.out.println(n);
-			 System.out.println("n = " + n);`
+			 System.out.println("n = " + n);
 	         n = n - 2;
 		 }
 		 break;
