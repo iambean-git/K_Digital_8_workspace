@@ -1,4 +1,4 @@
-package Chap6_Sorting;
+package dataStructure.chap06;
 
 /*
  * 그림 6-18: shell 정렬이 그룹이 섞이지 않는 문제: 4그룹 > 2그룹

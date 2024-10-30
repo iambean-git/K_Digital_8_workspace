@@ -1,6 +1,7 @@
-package Chap6_Sorting;
+package dataStructure.chap06;
 
-import Chap6_Sorting.StackSorting.Stack3;
+import java.util.Stack;
+
 //stack 1개를 사용한 non-recursve QuickSort() 구현
 
 class Point {
@@ -28,8 +29,8 @@ class Point {
 		iy = y;
 	}
 }
-public class train_실습과제6_1_QuickSort {
 
+public class train_실습과제6_1_QuickSort {
 
 //퀵 정렬(비재귀 버전)
 
@@ -43,9 +44,29 @@ public class train_실습과제6_1_QuickSort {
 	// --- 퀵 정렬(비재귀 버전)---//
 	static void quickSort(int[] a, int left, int right) {
 
-		Stack3<Point> st = new Stack3<>(10);
+		Stack<Point> stack = new Stack<>();
 		Point pt = new Point(left, right);
-		st.push(pt);
+		stack.push(pt);
+		
+		while(!stack.isEmpty()) {
+			Point tmp = stack.pop();
+			int pl = left = tmp.getX();		//왼쪽 커서
+			int pr = right = tmp.getY();	//오른쪽 커서
+				
+			int pivot = a[(left+right) / 2];	//피벗 (가운데 요소)
+			
+			do {
+				while(a[pl] < pivot)	pl++;
+				while(a[pr] > pivot)	pr--;
+				
+				if(pl<=pr)	swap(a,pl++, pr--);
+			} while(pl<=pr);
+			
+			//요소가 1개이면 아래 조건이 해당 안됨 (즉, 남은 요소가 2개이상)
+			if(left<pr) stack.push(new Point(left,pr));
+			
+			if(pl<right) stack.push(new Point(pl, right));
+		}
 
 	}
 
@@ -59,6 +80,7 @@ public class train_실습과제6_1_QuickSort {
 		for (int i = 0; i < nx; i++)
 			System.out.print(" " + x[i]);
 		System.out.println();
+		
 
 		quickSort(x, 0, nx - 1); // 배열 x를 퀵정렬
 
