@@ -73,6 +73,47 @@ public class BoardDAO extends JDBCconect {
 		return bbs;
 	}
 	
+	//검색 조건에 맞는 게시물 목록을 반환(페이징 기능 지원)
+	public List<BoardDTO> selectListPage(Map<String, Object> map){
+		List<BoardDTO> bbs = new Vector<BoardDTO>();
+		
+		//쿼리문 템플릿
+		String query = "select * from board";
+		
+		//검색 조건 추가
+		if(map.get("searchWord") != null) {
+			query += " WHERE " + map.get("searchField")
+					+ " Like '%" + map.get("searchWord") + "%' ";
+		}
+		
+		query += " ORDER BY num DESC limit ?, ? ";
+		//System.out.println("query: " + query);
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, (int)map.get("start"));
+			psmt.setInt(2, (int)map.get("pageSize"));
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardDTO dto = new BoardDTO();
+				
+				dto.setNum(rs.getString("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString("id"));
+				dto.setVisitcount(rs.getString("visitcount"));
+				
+				bbs.add(dto);
+			}
+		} catch(Exception e) {
+			System.out.println("게시물 조회 중 예외 발생(페이징)");
+			e.printStackTrace();
+		}
+		
+		return bbs;
+	}
+	
 	//게시글 작성
 	//게시글 데이터를 받아 DB에 추가
 	public int insertWrite(BoardDTO dto) {
