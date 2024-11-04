@@ -6,6 +6,7 @@ public class 실습6_12_1MergeSort정수2 {
 	static void merge(int[] a, int lefta, int righta, int leftb, int rightb ) {
 		 //body를 지우고 작성 훈련 연습이 도움이 된다 
 		int temp[] = new int[30];
+		//int temp[] = new int[rightb-lefta+1];
 		int ix = 0;
 		int p = lefta, q = leftb;
 		while (p <= righta && q <= rightb) {
@@ -15,8 +16,11 @@ public class 실습6_12_1MergeSort정수2 {
 				temp[ix++] = a[p++];temp[ix++] = a[q++];
 			}
 		}
-		while (p > righta && q <= rightb) temp[ix++] = a[q++];
-		while (q > rightb && p <= righta) temp[ix++] = a[p++];
+		//while (p > righta && q <= rightb) temp[ix++] = a[q++];
+		//while (q > rightb && p <= righta) temp[ix++] = a[p++];
+		
+		while ( q <= rightb) temp[ix++] = a[q++];
+		while ( p <= righta) temp[ix++] = a[p++];
 		System.out.println();
 		for (int j = 0; j < ix; j++) {
 			a[lefta+ j] = temp[j];

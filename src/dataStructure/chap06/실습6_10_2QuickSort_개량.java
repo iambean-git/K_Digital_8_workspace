@@ -3,8 +3,6 @@ package dataStructure.chap06;
 import java.util.Stack;
 
 //교재 232 실습 6-10을 수정
-import Chap6_Sorting.StackSorting.Stack3;
-
 //class Point {
 //	private int ix;
 //	private int iy;
