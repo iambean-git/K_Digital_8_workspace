@@ -130,7 +130,7 @@ class LinkedList1 {
 			prev.link = q;
 		}
 		
-		//b.first = null;
+		b.first = null;	// 꼬리 노드 삭제
 
 	}
 	
@@ -234,7 +234,7 @@ public class train_실습과제8_1정수연결리스트 {
 				System.out.println("병합 리스트 l::");
 				l.Show();
 				break;
-			case Exit: // 꼬리 노드 삭제
+			case Exit: 
 				break;
 			}
 		} while (menu != Menu.Exit);

@@ -69,7 +69,17 @@ class Node4 {
 	SimpleObject2 data; // 데이터
 	Node4 llink; // 좌측포인터(앞쪽 노드에 대한 참조)
 	Node4 rlink; // 우측포인터(뒤쪽 노드에 대한 참조)
-
+	
+	public Node4() {
+		data = new SimpleObject2();
+		llink = null; 	rlink=null;
+	}
+	
+	//--------------------------생성자??
+//	public Node4(SimpleObject2 element) {
+//		data = element;
+//		llink = null; 	rlink=null;
+//	}
 }
 
 class DoubledLinkedList2 {
@@ -78,6 +88,7 @@ class DoubledLinkedList2 {
 	// --- 생성자(constructor) ---//
 	public DoubledLinkedList2() {
 		first = new Node4(); // dummy(first) 노드를 생성
+		first.rlink = first;
 
 	}
 
@@ -88,7 +99,8 @@ class DoubledLinkedList2 {
 
 	// --- 노드를 검색 ---//
 	public boolean search(SimpleObject2 obj, Comparator<? super SimpleObject2> c) {
-
+		
+		return false;
 	}
 
 	// --- 전체 노드 표시 ---//

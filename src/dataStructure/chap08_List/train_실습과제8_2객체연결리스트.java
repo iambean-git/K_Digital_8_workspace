@@ -21,6 +21,7 @@ class SimpleObject5 {
 	public SimpleObject5() {
 		no = null;	name = null;
 	}
+	
 	// --- 데이터를 읽어 들임 ---//
 	void scanData(String guide, int sw) {//sw가 3이면 11 비트 연산 >  NO, NAME을 모두 입력받는다 
 		Scanner sc = new Scanner(System.in);
@@ -72,18 +73,21 @@ class LinkedList2 {
 	public int Delete(SimpleObject5 element, Comparator<SimpleObject5> cc)
 	//전달된 element를 찾을 때 comparator 객체를 사용한다 
 	{
-		Node2 q, current = first;
-		q = current;
+		Node2 q=null, current = first;
 		
 		while(current != null) {
 			if(cc.compare(element, current.data)==0) {
+				if(q==null) {
+					first = current.link;
+					return 1;
+				}
 				q.link = current.link;
 				return 1;
 			}
 			q = current;
 			current = current.link;
 		}
-		return -1;// 삭제할 대상이 없다.
+		return -1;	// 삭제할 대상이 없다.
 	}
 	
 	public void Show() { // 전체 리스트를 순서대로 출력한다.
@@ -146,6 +150,29 @@ class LinkedList2 {
 		 * 난이도 등급: 최상급
 		 * 회원번호에 대하여 a = (3, 5, 7), b = (2,4,8,9)이면 a = (2,3,4,5,8,9)가 되도록 구현하는 코드
 		 */
+		
+		Node2 p=first, q=b.first, prev = null;
+		
+		while(p!=null && q!=null) {
+			if(cc.compare(q.data, p.data)<0) {
+				Node2 tmp = q.link;
+				q.link = p;
+				
+				if(prev==null)	first = q;
+				else			prev.link = q;
+				
+				prev = q;
+				q = tmp;
+			} else {
+				prev = p;
+				p = p.link;
+			}
+		}
+		
+		if(p==null) prev.link = q;
+		
+		b.first = null;		// 꼬리 노드 삭제
+		
 	}
 }
 public class train_실습과제8_2객체연결리스트 {
@@ -235,7 +262,7 @@ public class train_실습과제8_2객체연결리스트 {
 				System.out.println("병합 리스트 l::");
 				l.Show();
 				break;
-			case Exit :                           // 꼬리 노드 삭제
+			case Exit :                           
 				break;
 			}
 		} while (menu != Menu.Exit);
