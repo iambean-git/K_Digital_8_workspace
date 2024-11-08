@@ -1,4 +1,4 @@
-package Chap9_Tree;
+package dataStructure.chap09_tree;
 
 import java.util.Arrays;
 

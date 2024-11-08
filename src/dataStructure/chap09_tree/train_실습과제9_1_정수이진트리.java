@@ -13,6 +13,8 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
 
+import dataStructure.chap04.IntStack4.OverflowIntStackException;
+
 class TreeNode5 {
 	TreeNode5 LeftChild;
 	int data;
@@ -27,12 +29,16 @@ class ObjectStack5{
 	//--- 실행시 예외: 스택이 비어있음 ---//
 	// generic class는 Throwable을 상속받을 수 없다 - 지원하지 않는다
 	public class EmptyGenericStackException extends Exception {
-
+		public EmptyGenericStackException(String msg) {
+			super(msg);
+		}
 	}
 
 	//--- 실행시 예외: 스택이 가득 참 ---//
 	public class OverflowGenericStackException extends RuntimeException {
-
+		public OverflowGenericStackException(String msg) {
+			super(msg);
+		}
 	}
 
     private List<TreeNode5> data;  // list를 사용: 배열은 크기를 2배로 늘리는 작업 필요 
@@ -42,18 +48,22 @@ class ObjectStack5{
 
 //--- 생성자(constructor) ---//
 	public ObjectStack5(int capacity) {
-
+		top = 0;
+		this.capacity = capacity;
+		data = new ArrayList<>(capacity);
 	}
 
 //--- 스택에 x를 푸시 ---//
 	public boolean push(TreeNode5 x) throws OverflowGenericStackException {
-
-
+		if(top==capacity) {
+			throw new OverflowGenericStackException("push: stack overflow");
+		}
 	}
 
 //--- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
 	public TreeNode5 pop() throws EmptyGenericStackException  {
-
+		if(isEmpty())
+			throw new EmptyGenericStackException("pop: stack empty");
 	}
 
 //--- 스택에서 데이터를 피크(peek, 정상에 있는 데이터를 들여다봄) ---//
