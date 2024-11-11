@@ -3,8 +3,6 @@ package fileupload;
 import java.util.List;
 import java.util.Vector;
 
-import org.apache.jasper.tagplugins.jstl.core.Catch;
-
 import common.JDBCconect;
 
 public class MyFileDAO extends JDBCconect{
