@@ -75,11 +75,7 @@ class Node4 {
 		llink = null; 	rlink=null;
 	}
 	
-	//--------------------------생성자??
-//	public Node4(SimpleObject2 element) {
-//		data = element;
-//		llink = null; 	rlink=null;
-//	}
+
 }
 
 class DoubledLinkedList2 {

@@ -1,4 +1,4 @@
-package Chap11_그래프;
+package dataStructure.chap11_Graph;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -101,7 +101,7 @@ public class 실습11_5최단경로 {
 			System.out.println();
 		}
 	}
-    public static int[][] makeGraph1() {
+    public static int[][] makeGraph1() {	//가중치가 마이너스일때
         return new int[][]{
             {0, 6, 5, 7, 0, 0, 0},
             {6, 0, -2, 0, -1, 0, 0},
