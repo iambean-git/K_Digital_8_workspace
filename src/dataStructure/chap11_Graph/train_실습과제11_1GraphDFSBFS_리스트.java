@@ -1,25 +1,25 @@
 package dataStructure.chap11_Graph;
+
 import java.util.*;
+import java.util.Stack;
 
 class Graph {
 	LinkedList<Integer>[] headNodes;
 	int n;
 	boolean[] visited;
 
-	@SuppressWarnings("unchecked")
 	public Graph(int vertices) {
 		n = vertices;
 		headNodes = new LinkedList[n];
 		visited = new boolean[n];
-
-		for (int i = 0; i < n; i++) {
+		
+		for(int i=0; i<n; i++) {
 			headNodes[i] = new LinkedList<>();
-			visited[i] = false;
 		}
 	}
 
 	void displayAdjacencyLists() {
-		for (int i = 0; i < n; i++) {
+		for(int i=0; i<n; i++) {
 			System.out.print("[" + i + "]");
 			for (int node : headNodes[i]) {
 				System.out.print(" -> " + node);
@@ -29,31 +29,28 @@ class Graph {
 	}
 
 	void insertEdge(int start, int end) {
-		if (start < 0 || start >= n || end < 0 || end >= n) {
-			System.out.println("The node number is out of bounds.");
-			return;
-		}
-
 		headNodes[start].add(end);
-		//adjacencyList[end].add(start);
 	}
 
 	void bfs(int startNode) {
 		boolean[] visited = new boolean[n];
 		Queue<Integer> queue = new LinkedList<>();
-
+		
+		for(int i=0; i<n; i++) {
+			visited[i] = false;
+		}
+		
 		visited[startNode] = true;
 		queue.add(startNode);
 
 		System.out.print("BFS traversal: ");
 		while (!queue.isEmpty()) {
-			int node = queue.poll();
-			System.out.print(node + " ");
-
-			for (int neighbor : headNodes[node]) {
-				if (!visited[neighbor]) {
-					visited[neighbor] = true;
-					queue.add(neighbor);
+			int pNode = queue.remove();
+			System.out.print(pNode + " ");
+			for(int node : headNodes[pNode]) {
+				if(!visited[node]) {
+					queue.add(node);
+					visited[node] = true;
 				}
 			}
 		}
@@ -69,17 +66,18 @@ class Graph {
 
 	void nonRecursiveDfs(int startNode) {
 		Stack<Integer> stack = new Stack<>();
+		
 		stack.push(startNode);
 		visited[startNode] = true;
 
 		while (!stack.isEmpty()) {
-			int node = stack.pop();
-			System.out.print(node + " ");
-
-			for (int neighbor : headNodes[node]) {
-				if (!visited[neighbor]) {
-					stack.push(neighbor);
-					visited[neighbor] = true;
+			int pNode = stack.pop();
+			System.out.print(pNode + " ");
+			
+			for(int node : headNodes[pNode]) {
+				if(!visited[node]) {
+					stack.push(node);
+					visited[node] = true;
 				}
 			}
 		}
@@ -94,8 +92,7 @@ class InputGraph3 {
 		this.end = end;
 	}
 }
-
-public class 실습11_1_GraphDFS_BFS_리스트 {
+public class train_실습과제11_1GraphDFSBFS_리스트 {
 	static final int N = 8;
 
 	static int[][] makeGraph() {

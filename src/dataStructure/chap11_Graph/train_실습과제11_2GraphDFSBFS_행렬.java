@@ -1,4 +1,4 @@
-package Chap11_그래프;
+package dataStructure.chap11_Graph;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,26 +11,24 @@ class Graph2 {
     boolean[] visited;
 
     public Graph2(int vertices) {
-        this.matrix = new int[vertices][vertices];
-        this.n = vertices;
-        this.visited = new boolean[n];
+    	n = vertices;
+    	matrix = new int[n][n];
+    	visited = new boolean[n];
     }
 
     // Insert an edge into the graph
     public void insertEdge(int start, int end) {
-        matrix[start][end] = 1;
-        matrix[end][start] = 1;
+    	matrix[start][end] = 1;
     }
 
     // Display adjacency matrix
     public void displayMatrix() {
-        System.out.println("Adjacency Matrix:");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
+    	for (int[] row : matrix) {
+    		for (int num: row) {
+    			System.out.print(num + " ");
+    		}
+    		System.out.println();
+    	}
     }
 
     // BFS implementation using a queue
@@ -42,14 +40,14 @@ class Graph2 {
 
         System.out.print("BFS traversal: ");
         while (!q.isEmpty()) {
-            int v1 = q.poll();
-            System.out.print(v1 + " ");
-            for (int i = 0; i < n; i++) {
-                if (matrix[v1][i] != 0 && !visited[i]) {
-                    q.add(i);
-                    visited[i] = true;
-                }
-            }
+        	int now = q.remove();
+        	System.out.print(now + " ");
+        	for(int i=0; i<n; i++) {
+        		if(!visited[i] && matrix[now][i]==1) {
+        			q.add(i);
+        			visited[i] = true;
+        		}
+        	}
         }
         System.out.println();
     }
@@ -66,9 +64,9 @@ class Graph2 {
         visited[v] = true;
         System.out.print(v + " ");
         for (int i = 0; i < n; i++) {
-            if (matrix[v][i] != 0 && !visited[i]) {
-                _DFS(i);
-            }
+        	if(matrix[v][i]==1 && !visited[i]) {
+        		_DFS(i);
+        	}
         }
     }
 
@@ -77,25 +75,23 @@ class Graph2 {
         visited = new boolean[n]; // Reset visited array
         Stack<Integer> stack = new Stack<>();
         stack.push(v);
+        visited[v] = true;
 
         System.out.print("DFS traversal (non-recursive): ");
         while (!stack.isEmpty()) {
-            int current = stack.pop();
-            if (!visited[current]) {
-                visited[current] = true;
-                System.out.print(current + " ");
-                for (int i = n - 1; i >= 0; i--) { // Traverse in reverse for consistent order
-                    if (matrix[current][i] != 0 && !visited[i]) {
-                        stack.push(i);
-                    }
-                }
+        	int p = stack.pop();
+        	System.out.print(p + " ");
+        	for (int i = n - 1; i >= 0; i--) {
+            	if(matrix[p][i]==1 && !visited[i]) {
+            		stack.push(i);
+            		visited[i] = true;
+            	}
             }
         }
         System.out.println();
     }
 }
-
-public class 실습11_2GraphDFSBFS_행렬 {
+public class train_실습과제11_2GraphDFSBFS_행렬 {
     static final int N = 8;
 
     static int[][] makeGraph() {
