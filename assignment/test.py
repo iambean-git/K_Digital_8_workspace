@@ -1,2 +1,3 @@
-numbers = list(range(1,6))
-print(numbers)
+from random import choice
+y_distance = choice(range(0,4))
+print(y_distance)
