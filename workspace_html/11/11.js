@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             //찬희님 방식
             let delItem = btn.innerHTML.replace(' 삭제','');
             txt.value = txt.value.replaceAll(delItem,'');
-
         });
     }
 
