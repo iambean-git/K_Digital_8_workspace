@@ -82,7 +82,7 @@ public class MemberController {
 	}
 	
 	@DeleteMapping("/member")
-		public int removeMember(@RequestBody Integer id) {
+	public int removeMember(@RequestBody Integer id) {
 		try {
 			memberList.remove(getMemberById(id));
 		} catch (Exception e) {
