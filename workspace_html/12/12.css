@@ -1,11 +1,10 @@
 #boxofficeMain, #mvfooter{
     display: flex;
-
     flex-direction: column;
     justify-content: start;
     align-items: center;
     padding-top: 1%;
-    
+
 }
 
 #boxofficeMain{ 

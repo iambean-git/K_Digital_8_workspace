@@ -78,6 +78,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     sel1.addEventListener('change', ()=>{
         getData(dt.value.replaceAll('-',''), ul,sel1);
-    });
-    
+    }); 
 });

@@ -26,5 +26,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
     //요소 가져오기
     const ul = document.querySelector('.sec>ul');
     getData(ul);
-
 });

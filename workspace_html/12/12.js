@@ -51,7 +51,6 @@ const getDetail = (movieCd) => {
             //영화정보 화면에 출력
             mvinfo2.innerHTML = mvContent;
         })
-
         .catch( err => console.error(err));
 }
 
