@@ -1,0 +1,14 @@
+.metadata/
+Servers/
+JSPMission/.settings/
+JSPMission/build/
+JSPMission/.classpath
+JSPMission/.project
+JSPMission/src/main/webapp/WEB-INF/
+JSPMission/src/main/webapp/META-INF/
+MustHaveJSP/.settings/
+MustHaveJSP/build/
+MustHaveJSP/.classpath
+MustHaveJSP/.project
+MustHaveJSP/src/main/webapp/WEB-INF/
+MustHaveJSP/src/main/webapp/META-INF/
