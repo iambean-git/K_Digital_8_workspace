@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "title": "안녕하세요",
+      "author": "조은빈",
+      "id": "1"
+    },
+    {
+      "title": "소년이 온다 22",
+      "author": "한강",
+      "id": "a9de"
+    },
+    {
+      "id": "cc5e",
+      "title": "템플스테이 ",
+      "author": "정유진"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "This is a comment1.",
+      "postId": 1
+    },
+    {
+      "id": "2",
+      "body": "This is a comment2.",
+      "postId": 1
+    }
+  ]
+}
