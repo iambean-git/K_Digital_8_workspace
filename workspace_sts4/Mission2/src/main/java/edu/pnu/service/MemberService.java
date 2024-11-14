@@ -10,7 +10,7 @@ public class MemberService {
 	private List<MemberVO> list = new  ArrayList<MemberVO>();
 	
 	public MemberService() {
-		System.out.println("===>MemberController 생성");
+		System.out.println("===>MemberService 생성");
 		for(int i=1; i<=10; i++) {
 			list.add(MemberVO.builder().id(i)
 					.name("홍길동" + i)
