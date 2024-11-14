@@ -56,8 +56,6 @@ class Sets {
         	parent[i] = j;
         }
         
-
-        
     }
 
     public int simpleFind(int i) {
@@ -74,17 +72,22 @@ class Sets {
         j = simpleFind(j);
         if (i == j) return;
         // union 구현
-
+        
+        int tmp = parent[i] + parent[j];
+        if(parent[i] > parent[j]) { //j가 자식이 더 많음
+        	parent[i] = j;
+        	parent[j] = tmp;
+        } else {	//i가 자식이 더 많음
+        	parent[j] = i;
+        	parent[i] = tmp;
+        }
     }
-
 }
 public class train_실습과제9_3_집합트리 {
     public static void main(String[] args) {
         Sets m = new Sets(20);
         m.simpleUnion(7, 1);
-        m.display();
         m.simpleUnion(2, 3);
-        m.display();
         m.simpleUnion(4, 5);
         m.simpleUnion(6, 7);
         m.simpleUnion(4, 2);
