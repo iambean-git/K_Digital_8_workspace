@@ -1,3 +1,4 @@
+//폭탄게임
 let arr = [0,0,0,0,0,0,0,0,1];
 let isShuffle = false;
 let cnt = 0;
