@@ -1,0 +1,71 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+header, main {
+    width: 80%;
+    margin-left: 10%;
+    
+    display: flex;
+}
+
+header{
+    height: 80px;
+    background-color: #b98db4;
+    color: white;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+h1{
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 250%;
+}
+
+header img {
+    filter: invert(100%);
+    width: 30px;
+    height: 30px;
+}
+
+main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 600px;
+    border: 1px dotted #cb99c5;
+}
+
+section{
+    margin: 10px;
+}
+
+
+button{
+    background-color: white;
+    color: black;
+    border: 3px solid #cb99c5;
+    text-align: center;
+    padding: 10px 20px 14px 20px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    
+    font-family: "Hahmlet", serif;
+    font-weight : 500;
+    font-style: normal;
+    font-size: 100%;
+
+}
+
+button:hover{
+    border: 3px solid #cb99c5;
+    background-color: #cb99c5;;
+    color : white;
+}

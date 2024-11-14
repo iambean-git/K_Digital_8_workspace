@@ -1,0 +1,247 @@
+#boxofficeMain, #mvfooter{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 1%;
+
+}
+
+#boxofficeMain{ 
+    height: fit-content;
+}
+
+#mvfooter{
+    width: 100%;
+}
+
+#mvinfo{
+    width: 80%;
+    height: 100%;
+    /* border: 1px dotted #cb99c5;  정보뜰때등장*/
+}
+
+.sec, ul{
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec {
+    width: 100%;
+    /* height: 13%; */
+}
+
+.divDt{
+    margin-top: 0%;
+    width: 80%;
+    height: 75px;
+    background-color: rgb(253, 245, 255);
+    border-radius: 10px ;
+    border: 1px dotted #cb99c5;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=date], fieldset{
+    width: 40%;
+    height: 50%;
+}
+
+fieldset{
+    border: none;
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+}
+
+label{
+    margin-left: 1%;
+    margin-right: 5%;
+}
+
+ul > a{
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    color: black;
+}
+
+select{
+    width: 15%;
+    height: 50%;
+    margin-left: 10%;
+}
+
+ul{
+    width: 50%;
+    /* border: 1px dotted rgb(177, 177, 177); */
+    padding: 2px;
+}
+
+.mvli{
+    list-style-type: none;
+    height:15px;
+    width: 100%;
+    margin: 0px 2px;
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.mvli:hover{
+    background-color: aliceblue;
+    border-bottom: 1px solid rgb(158, 197, 231);
+}
+
+.moreinfo{
+    margin: 10px 0px 10px 0px;
+    font-size: small;
+    color: rgb(121, 121, 121);
+}
+.rank{
+    margin-right: 5%;
+
+    width: 30px;
+    height: 30px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 119);
+    border-radius: 20%;
+    font-size: small;
+    color: white;
+    padding-bottom: 2px;
+}
+
+.movieNM {
+    width: 50%;
+}
+  
+.openDt {
+    width: 30%;
+}
+  
+.rankInten {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spRed {
+    color: red;
+}
+  
+  .spBlue {
+    color: blue;
+}
+
+#mvinfo2{
+    padding: 2%;
+}
+
+#infoMain{
+    font-weight: bold;
+    background-color: #dfddfd;
+    padding: 0.5%;
+    margin-bottom: 0.5%;
+    color: black;
+}
+
+.infoTitle{
+    color: darkgrey;
+    font-weight: bold;
+}
+
+
+
+
+/* 반응형 웹 연습 */
+@media (min-width:360px) and (max-width:720px){
+    header, main {
+        width: 90%;
+        margin-left: 5%;
+        display: flex;
+    }
+    #mvinfo{
+        width: 90%;
+        font-size: 0.8rem;
+    }
+
+    header{
+        height: fit-content;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3%;
+    }
+
+    h1{
+        font-family: "Do Hyeon", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 140%;
+    }
+
+    header img {
+        filter: invert(100%);
+        width: 100%;
+        height: 100%;
+    }
+
+    header a{
+        width: 8%;
+        aspect-ratio: 1 / 1;
+    }
+
+    label,li{
+        font-size: 0.8rem;
+    }
+
+    ul {
+        width: 90%;
+    }
+
+    .divDt{
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    input[type=date]{
+        width: 90%;
+        height: 40%;
+    }
+
+    fieldset{
+        width: 100%;
+        height: 40%;
+        margin-top: 0.5%;
+        
+    }
+
+    .mvli{
+        padding-left: 2%;
+        padding-right: 1%;
+    }
+
+    .moreinfo{
+        margin: 0.5rem 0 0 0;
+        font-size: 0.7rem;
+    }
+}

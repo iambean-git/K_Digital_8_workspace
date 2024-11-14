@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Boxoffice">
+    <meta property="og:description" content="은빈이가 알려주는 영화 정보">
+    <meta property="og:image" content="../img/boxoffice.jpg">
+    <title> 자바스크립트 박스오피스 </title>
+    <link rel="stylesheet" type="text/css" href="../js.css">
+    <link rel="stylesheet" type="text/css" href="./12.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Hahmlet:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- 외부 스크립트 작성 방법 -->
+    <script src="./12.js"> </script>
+</head>
+
+<body>
+    <header>
+        <h1> 자바스크립트 - 박스오피스 </h1>
+        <a href="../index.html"><img src="../img/home.png" id="home"></a>
+    </header>
+
+    <form>
+        <main id="boxofficeMain">
+            <section class="sec">
+                <div class="divDt">
+                    <input type="date" id="dt" name="dt" />
+                    <fieldset>
+                        <input type="radio" id="r1" name="nation" value="default" checked="checked">
+                        <label for="r1"> 전체 </label>
+                        <input type="radio" id="r2" name="nation" value="K">
+                        <label for="r2"> 한국영화 </label>
+                        <input type="radio" id="r3" name="nation" value="F">
+                        <label for="r3"> 외국영화 </label>
+                    </fieldset>
+                    
+                </div>      
+                
+            </section>
+
+            <section class="sec">
+                <ul>
+                    <!-- <li class="mvli">
+                        <span class="rank"> 1 </span>
+                        <span class="movieNM">미션임파서블:고스트프로토콜</span>
+                        <sapn class="openDt">2020-01-01</span>
+                        <span class="rankInten"> -1 </span>
+                    </li> -->
+                    
+                </ul>
+                <div class="moreinfo">
+                    영화 제목 클릭시 하단에 상세 정보를 확인하실 수 있습니다.
+                </div>
+
+                
+            </section>
+
+        </main>
+
+        <footer id="mvfooter">
+            <div id="mvinfo">
+                <div id="mvinfo2">
+                    
+                </div>
+            </div>
+        </footer>
+
+    </form>
+</body>
+
+</html>
