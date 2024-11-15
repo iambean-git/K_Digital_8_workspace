@@ -54,7 +54,6 @@ public class MemberDao extends JDBCconnect {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 	

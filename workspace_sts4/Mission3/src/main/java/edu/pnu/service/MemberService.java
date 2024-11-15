@@ -8,6 +8,7 @@ import edu.pnu.domain.MemberDTO;
 public class MemberService {
 	private MemberDao memberDao = new MemberDao();
 	
+	
 	public MemberService() {
 		System.out.println("===>MemberService 생성");		
 	}
@@ -36,6 +37,4 @@ public class MemberService {
 	public int removeMember(Integer id) {
 		return memberDao.removeMember(id);
 	}
-	
-	
 }
