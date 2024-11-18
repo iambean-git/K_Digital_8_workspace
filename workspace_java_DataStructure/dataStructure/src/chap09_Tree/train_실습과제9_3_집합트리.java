@@ -32,13 +32,18 @@ class Sets {
         }
 
         //삭제할 element의 root를 찾는다
-
+        int root = simpleFind(n);
 
         // 같은 집합의 모든 elements의 parent가 n이면 root를 가리키게 한다
-
+        for(int i=1; i<parent.length; i++) {
+        	if(parent[i]==n) {
+        		parent[i] = root;
+        	}
+        }
 
         // 삭제 처리는 -1로 표시하여 삭제 처리
-
+        parent[root] = parent[root] + 1;
+        parent[n] = -1;
     }
 
     public void simpleUnion(int i, int j) {
@@ -116,7 +121,8 @@ public class train_실습과제9_3_집합트리 {
         	System.out.println("2, 18은 다른 집합이다");
         m.display();
         System.out.println("***2를 집합에서 삭제한다***");
-        m.delete(2);
+        m.delete(1);
+        m.display();
         if (m.simpleFind(2) == m.simpleFind(18))
         	System.out.println("2, 18은 같은 집합이다");
         else
