@@ -69,8 +69,17 @@ class Sets {
         return i;				//루트 반환
     }
 
-    public void union(int x, int y) {
-
+    public void union(int i, int j) {
+    	i = find(i);
+        j = find(j);
+        if (i == j) return;        
+        if(parent[i] < parent[j]) {
+        	parent[i] += parent[j];
+        	parent[j] = i;
+        } else {
+        	parent[j] += parent[i];
+        	parent[i] = j;
+        }
     }
 }
 public class train_실습과제11_3최소spanningtree_리스트 {
@@ -95,9 +104,15 @@ public class train_실습과제11_3최소spanningtree_리스트 {
         Sets ds = new Sets(n);
         List<Edge3> mst = new ArrayList<>();
 
-//        for (Edge3 edge : edgeArray) {
-//     
-//        }
+        for (Edge3 edge : edgeArray) {
+        	int a = ds.find(edge.dest);
+        	int b = ds.find(edge.src);
+        	
+        	if(a != b) {
+        		mst.add(edge);
+        		ds.union(a, b);
+        	}
+        }
 
         // MST 출력
         if (mst.size() != n - 1) {
