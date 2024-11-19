@@ -6,19 +6,23 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import edu.pnu.JDBCconnect;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Repository
 public class LogDao extends JDBCconnect{
 	public LogDao() {
 		// TODO Auto-generated constructor stub
-		System.out.println("LogDao() 생성");
+//		System.out.println("LogDao() 생성");
+		log.debug("LogDao() 생성");
 	}
 	public void addLog( Map<String, Object> map ) {
 		String method = (String) map.get("method");
 		String sqlstring = (String) map.get("sqlstring");
 		boolean success = (boolean) map.get("success");
 		
-		System.out.println("Log를 추가합니다");
+//		System.out.println("Log를 추가합니다");
+		log.debug("Log를 추가합니다");
 		
 		int result = 0;
 		String query = "INSERT INTO dblog ( "
