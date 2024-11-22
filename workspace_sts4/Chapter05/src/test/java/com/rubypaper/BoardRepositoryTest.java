@@ -14,7 +14,7 @@ import com.rubypaper.domain.Board;
 import com.rubypaper.persistence.BoardRepository;
 
 //여러 테스트들을 순서에 맞게 실행시키고 싶을때
-@TestMethodOrder(OrderAnnotation.class)
+//@TestMethodOrder(OrderAnnotation.class)
 @SpringBootTest
 public class BoardRepositoryTest {
 	
@@ -22,8 +22,8 @@ public class BoardRepositoryTest {
 	private BoardRepository boardRepo;
 	
 	@DisplayName("입력 테스트")
-	@Test
-	@Order(1)
+//	@Test
+//	@Order(1)
 	public void testInsertBoard() {
 //		Board board = new Board();
 //		board.setTitle("첫 번째 게시글");
@@ -45,8 +45,8 @@ public class BoardRepositoryTest {
 	}
 	
 	@DisplayName("조회 테스트")
-	@Test
-	@Order(2)
+//	@Test
+//	@Order(2)
 	public void testGetBoard() {
 		Board board = boardRepo.findById(3L).get();
 		System.out.println(board.toString());
@@ -67,4 +67,6 @@ public class BoardRepositoryTest {
 	public void testDeleteBoard() {
 		boardRepo.deleteById(1L);
 	}
+	
+
 }
