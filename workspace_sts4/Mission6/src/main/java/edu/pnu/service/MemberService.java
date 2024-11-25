@@ -57,7 +57,24 @@ public class MemberService {
 	}
 	
 	public Member putMember(Member mem) {
-		Member before = memberRepo.findById(mem.getId()).orElse(null);
+		Member before = null;
+		
+		//id를 입력하지 않아 오류 발생할 경우
+		if(mem.getId()==null) {
+			System.out.println("[수정] id값이 없습니다(null)");
+			
+			logRepo.save(Log.builder()
+					.method("put")
+					.sqlQuery("save[수정] : id is null")
+					.regidate(new Date())
+					.success(false)
+					.build()
+			);
+			
+			return null;
+		}
+		
+		before = memberRepo.findById(mem.getId()).orElse(null);
 		if(before!=null) {
 			if(mem.getName() != null)
 				before.setName(mem.getName());
@@ -67,6 +84,7 @@ public class MemberService {
 			System.out.println("[수정] 해당 id는 존재하지 않습니다");
 			
 		}
+		
 		logRepo.save(Log.builder()
 				.method("put")
 				.sqlQuery("save[수정]")

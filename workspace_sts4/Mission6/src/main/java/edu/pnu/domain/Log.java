@@ -26,7 +26,7 @@ public class Log {
 	private Integer id;
 	private String method;
 	private String sqlQuery;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date regidate;
 	private boolean success;
 }
