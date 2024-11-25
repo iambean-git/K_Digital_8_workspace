@@ -35,7 +35,7 @@ public class BoardRepositoryTest {
 		
 		boardRepo.save(Board.builder()
 							.title("제목입니다2")
-							.writer("작성자2")
+//							.writer("작성자2")
 							.content("내용2")
 							.createDate(new Date())
 							.cnt(0L)

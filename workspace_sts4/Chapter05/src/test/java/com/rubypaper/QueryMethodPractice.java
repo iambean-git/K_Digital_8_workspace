@@ -26,7 +26,7 @@ public class QueryMethodPractice {
 			Long cnt = rnd.nextLong(101L);
 			boardRepo.save(Board.builder()
 								.title("테스트 제목 " + i)
-								.writer("테스트 작성자 " + i)
+//								.writer("테스트 작성자 " + i)
 								.content("테스트 내용 " + i)
 								.createDate(new Date())
 								.cnt(cnt)

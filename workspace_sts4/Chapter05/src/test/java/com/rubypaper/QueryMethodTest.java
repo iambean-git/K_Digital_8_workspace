@@ -26,7 +26,7 @@ public class QueryMethodTest {
 		for(int i=1; i<=200; i++) {
 			boardRepo.save(Board.builder()
 								.title("테스트 제목 " + i)
-								.writer("테스터 작성자 " + i )
+//								.writer("테스터 작성자 " + i )
 								.content("테스트 내용 " + i)
 								.createDate(new Date())
 								.cnt(0L)

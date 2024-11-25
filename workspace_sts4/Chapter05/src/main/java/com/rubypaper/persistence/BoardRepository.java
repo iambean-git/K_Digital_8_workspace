@@ -29,9 +29,9 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 	@Query("SELECT b FROM Board b WHERE b.title like %:searchKeyword% ORDER BY b.seq desc")
 	List<Board> queryAnnotationTest1(String searchKeyword);
 	
-	@Query("select b.seq, b.title, b.writer, b.createDate "
-			+ "from Board b "
-			+ "where b.title like %?1% "
-			+ "order by b.seq desc")
-	List<Object[]> queryAnnotationTest2(String searchKeyword);
+//	@Query("select b.seq, b.title, b.writer, b.createDate "
+//			+ "from Board b "
+//			+ "where b.title like %?1% "
+//			+ "order by b.seq desc")
+//	List<Object[]> queryAnnotationTest2(String searchKeyword);
 }
