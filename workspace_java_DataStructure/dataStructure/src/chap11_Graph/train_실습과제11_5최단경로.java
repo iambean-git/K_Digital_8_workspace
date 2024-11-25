@@ -41,11 +41,16 @@ class Graph3 {
     }
 
     public boolean isNonNegativeEdgeCost() {
-		return false;
- 
+    	for (int i = 0; i < n; i++) {
+            for (int k = 0; k < n; k++) {
+                if (length[i][k] < 0) return false;
+            }
+        }
+        return true;
     }
 
     public void shortestPath(int startNode) {
+    	// s: 방문 여부 체크하기 위한 배열 (false로 초기화)
         Arrays.fill(s, false);
         for (int i = 0; i < n; i++) {
             dist[i] = length[startNode][i];
@@ -54,15 +59,27 @@ class Graph3 {
         dist[startNode] = 0;
 
         for (int i = 0; i < n - 1; i++) {
-    
+        	int m = choose();
+        	s[m] = true;
+        	for(int w=0; w<n; w++) {
+        		if( !s[w] && dist[m] + length[m][w] < dist[w] ) {
+        			dist[w] = dist[m] + length[m][w];
+        		}
+        	}
         }
         printDistances(startNode);
     }
 
     private int choose() {
         int minDist = MAX_WEIGHT;
-		return minDist;
-   
+        int index = -1;
+        for(int i=0; i<n; i++) {
+        	if(!s[i] && dist[i] < minDist ) {
+        		minDist = dist[i];
+        		index = i;
+        	}
+        }
+		return index;
     }
 
     private void printDistances(int startNode) {
