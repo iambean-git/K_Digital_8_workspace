@@ -8,4 +8,5 @@
 
 
 ### tailwind form 
-npm install -D @tailwindcss/forms
++ npm install -D @tailwindcss/forms
++ https://github.com/tailwindlabs/tailwindcss-forms

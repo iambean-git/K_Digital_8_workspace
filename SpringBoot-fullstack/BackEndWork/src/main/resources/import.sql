@@ -1,0 +1,12 @@
+insert into member (username,password) values ('scott', 'tiger');
+insert into member (username,password) values ('홍길동', 'abcd');
+insert into member (username,password) values ('홍이동', '1234');
+insert into board (title, content, username) values ('title1', 'content1', 'scott');
+insert into board (title, content, username) values ('title2', 'content2', 'scott');
+insert into board (title, content, username) values ('title3', 'content3', '홍길동');
+insert into board (title, content, username) values ('title4', 'content4', '홍길동');
+insert into board (title, content, username) values ('title5', 'content5', '홍길동');
+insert into board (title, content, username) values ('title6', 'content6', '홍이동');
+insert into board (title, content, username) values ('title7', 'content7', '홍이동');
+insert into board (title, content, username) values ('title8', 'content8', '홍이동');
+insert into board (title, content, username) values ('title9', 'content9', '홍이동');

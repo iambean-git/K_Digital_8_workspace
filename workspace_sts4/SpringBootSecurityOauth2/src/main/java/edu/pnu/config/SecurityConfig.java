@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizationSuccessHandler;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-	private final OAuth2AuthorizationSuccessHandler successHandler;
+	//체크      
 	
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -55,7 +56,6 @@ public class SecurityConfig {
 		
 		http.headers(hr->hr.frameOptions(fo->fo.disable()));
 		
-		http.oauth2Login(oauth2->oauth2.successHandler(successHandler))
 		
 		return http.build();
 	}
