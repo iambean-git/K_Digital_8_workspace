@@ -4,3 +4,8 @@
 ### 실행 : `npm start`
 
 단축어 rfc : 기본 틀 자동 생성 (es7 snippet extension 활용)
+
+
+
+### tailwind form 
+npm install -D @tailwindcss/forms
