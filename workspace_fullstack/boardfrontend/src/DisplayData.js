@@ -8,7 +8,7 @@ export default function DisplayData() {
     const txt3Ref = useRef();
 
     const loadBoard = async() => {
-        await fetch("http://localhost:8080/board")
+        await fetch("http://10.125.121.214:8080/board")
         .then(resp=>{
             return resp.json();
         }).then(result=>{
